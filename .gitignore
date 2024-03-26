@@ -1,0 +1,40 @@
+# OSX folder stuff
+.DS_Store
+Thumbs.db
+
+#IDE project files
+.idea/
+.settings
+.project
+
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+Gemfile*.lock
+*gem
+
+# rspec failure tracking
+.rspec_status
+
+# Ignore test-reports
+reports/*.html
+reports/*.xml
+reports/*.json
+reports/screenshots/
+test-reports
+capybara-*.html
+debug.log
+
+BrowserStackLocal
+cbttunnel.jar
+
+/.yardoc/
+/local.log
+.run/*.xml
+
+echo coverage >> .gitignore

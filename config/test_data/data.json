@@ -1,0 +1,22 @@
+{
+  "Environments": {
+    "RN_DEMO": {
+      "DEEP_LINK_PREFIX": "mydemoapprn",
+      "IOS_BUNDLE_ID": "com.saucelabs.mydemoapp.rn",
+      "IOS_APP_PATH": "/Users/Shared/Test_Apps/iOS/MyRNDemoApp.app",
+      "IOS_IPA_PATH": "/Users/Shared/Test_Apps/iOS/iOS-Real-Device-MyRNDemoApp.1.3.0-162.ipa",
+      "IOS_TEST_ID": "RNDemoAppiOS",
+      "ANDROID_APP_ID": "com.saucelabs.mydemoapp.rn",
+      "ANDROID_APK_PATH": "/Users/Shared/Test_Apps/Android/Android-MyDemoAppRN.1.3.0.build-244.apk",
+      "ANDROID_TEST_ID": "RNDemoAppAndroid"
+    },
+    "WDIO_DEMO": {
+      "IOS_BUNDLE_ID": "org.reactjs.native.example.wdiodemoapp",
+      "IOS_APP_PATH": "/Users/Shared/Test_Apps/iOS/wdiodemoapp.app",
+      "IOS_TEST_ID": "WDIODemoAppiOS",
+      "ANDROID_APP_ID": "com.wdiodemoapp",
+      "ANDROID_APK_PATH": "/Users/Shared/Test_Apps/Android/android.wdio.native.app.v1.0.8.apk",
+      "ANDROID_TEST_ID": "WDIODemoAppAndroid"
+    }
+  }
+}
