@@ -22,7 +22,8 @@ Gem::Specification.new do |spec|
     'changelog_uri' => 'https://github.com/TestCentricity/testcentricity_mobile/blob/master/CHANGELOG.md',
     'bug_tracker_uri' => 'https://github.com/TestCentricity/testcentricity_mobile/issues',
     'wiki_uri' => 'https://github.com/TestCentricity/testcentricity_mobile/wiki',
-    'documentation_uri' => 'https://www.rubydoc.info/gems/testcentricity_mobile'
+    'documentation_uri' => 'https://www.rubydoc.info/gems/testcentricity_mobile',
+    'homepage_uri' => 'https://github.com/TestCentricity/testcentricity_mobile'
   }
 
   spec.files         = Dir.glob('lib/**/*') + %w[README.md CHANGELOG.md LICENSE.md .yardopts]

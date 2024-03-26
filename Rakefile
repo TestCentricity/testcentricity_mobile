@@ -5,6 +5,7 @@ require 'rake'
 require 'rspec/core/rake_task'
 require 'simplecov'
 require 'yard'
+require 'testcentricity_mobile/version'
 
 
 desc 'Run WIP specs'
