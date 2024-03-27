@@ -310,9 +310,15 @@ Refer to the [Speeding Up Tests With Deep Links](https://appiumpro.com/editions/
 A `ScreenSection` is a collection of **UI Elements** that may appear in multiple locations on a screen, or on multiple
 screens in an app. It is a collection of **UI Elements** that represent a conceptual area of functionality, like a menu,
 a navigation bar, or a search capability. **UI Elements** and functional behavior are confined to the scope of a `ScreenSection`
-object.
+object. A `ScreenSection` may contain other `ScreenSection` objects.
 
-A `ScreenSection` may contain other `ScreenSection` objects.
+Below is an example of a footer navigation bar feature that is common to multiple screen -
+
+![Navigation Footer](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/NavBar1.png "Navigation Footer")
+
+-
+
+![Navigation Footer](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/NavBar2.png "Navigation Footer")
 
 
 ### Defining a ScreenSection
@@ -687,38 +693,45 @@ The `verify_ui_states` method also supports I18n string translations using prope
     :translate_capitalize String
     :translate_titlecase  String
 
-The example below depicts the usage of the `verify_ui_states` method to verify that the captions for menu items are correctly
-translated.
+The example below depicts the usage of the `verify_ui_states` method to verify that the captions for navigation menu items
+are correctly translated.
+
+![Localized UI](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/LocalizedUI.png "Localized UI")
+
 ```ruby
     def verify_menu
       ui = {
-        account_settings_item => {
+        menu_title => {
           visible: true,
-          caption: { translate: 'Settings.account' }
+          caption: { translate: 'NavMenu.title' }
         },
-        help_item => {
+        recipes_item => {
           visible: true,
-          caption: { translate: 'Settings.help' }
+          caption: { translate: 'NavMenu.recipes' }
         },
-        feedback_item => {
+        browser_item => {
           visible: true,
-          caption: { translate: 'Settings.feedback' }
+          caption: { translate: 'NavMenu.browser' }
         },
-        legal_item => {
+        groceries_item => {
           visible: true,
-          caption: { translate: 'Settings.legal' }
+          caption: { translate: 'NavMenu.groceries' }
         },
-        configurations_item => {
+        pantry_item => {
           visible: true,
-          caption: { translate: 'Settings.configurations' }
+          caption: { translate: 'NavMenu.pantry' }
         },
-        contact_us_item => {
+        meals_item => {
           visible: true,
-          caption: { translate: 'Settings.contact' }
+          caption: { translate: 'NavMenu.meals' }
         },
-        sign_out_item => {
+        menus_item => {
           visible: true,
-          caption: { translate: 'Settings.sign_out' }
+          caption: { translate: 'NavMenu.menus' }
+        },
+        settings_item => {
+          visible: true,
+          caption: { translate: 'NavMenu.settings' }
         }
       }
       verify_ui_states(ui)
@@ -730,38 +743,41 @@ menu example above, the translated strings for English, Spanish, and French are 
 **English** - `en.yml`
 ```yaml
     en:
-      Settings:
-        account: 'Account'
-        help: 'Help'
-        feedback: 'Feedback'
-        legal: 'Legal'
-        configurations: 'Configurations'
-        contact: 'Contact'
-        sign_out: 'Sign out'
+      NavMenu:
+        title: 'Main Menu'
+        recipes: 'Recipes'
+        browser: 'Browser'
+        groceries: 'Groceries'
+        pantry: 'Pantry'
+        meals: 'Meals'
+        menus: 'Menus'
+        settings: 'Settings'
 ```
 **Spanish** - `es.yml`
 ```yaml
     es:
-      Settings:
-        account: 'Cuenta'
-        help: 'Ayuda'
-        feedback: 'Comentario'
-        legal: 'Legal'
-        configurations: 'Configuraciones'
-        contact: 'Contacto'
-        sign_out: 'Cerrar sesión'
+      NavMenu:
+        title: 'Menú principal'
+        recipes: 'Recetas'
+        browser: 'Navegador'
+        groceries: 'Compra'
+        pantry: 'Despensa'
+        meals: 'Comidas'
+        menus: 'Menús'
+        settings: 'Ajustes'
 ```
 **French** - `fr.yml`
 ```yaml
     fr:
-      Settings:
-        account: 'Compte'
-        help: 'Aide'
-        feedback: 'Retour'
-        legal: 'Légal'
-        configurations: 'Configurations'
-        contact: 'Contact'
-        sign_out: 'Fermer la session'
+      NavMenu:
+        title: 'Menu principal'
+        recipes: 'Recettes'
+        browser: 'Navigateur'
+        groceries: 'Courses'
+        pantry: 'Provisions'
+        meals: 'Repas'
+        menus: 'Menus'
+        settings: 'Réglades'
 ```
 
 Each supported language/locale combination has a corresponding `.yml` file. I18n `.yml` file naming convention uses
