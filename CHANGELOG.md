@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 
 
+## [4.0.2] - 27-MAR-2024
+
+### Changed
+
+* Updated `selenium-webdriver` gem to version 4.19.0.
+
+
 ## [4.0.0] - 26-MAR-2024
 
 ### Fixed
