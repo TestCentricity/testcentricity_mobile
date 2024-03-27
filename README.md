@@ -314,11 +314,7 @@ object. A `ScreenSection` may contain other `ScreenSection` objects.
 
 Below is an example of a footer navigation bar feature that is common to multiple screen -
 
-![Navigation Footer](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/NavBar1.png "Navigation Footer")
-
--
-
-![Navigation Footer](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/NavBar2.png "Navigation Footer")
+![Navigation Footer](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/NavBar1.png "Navigation Footer")       ![Navigation Footer](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/NavBar2.png "Navigation Footer")
 
 
 ### Defining a ScreenSection
@@ -697,7 +693,6 @@ The example below depicts the usage of the `verify_ui_states` method to verify t
 are correctly translated.
 
 ![Localized UI](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/LocalizedUI.png "Localized UI")
-
 ```ruby
     def verify_menu
       ui = {
