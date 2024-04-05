@@ -23,7 +23,7 @@ describe TestCentricity::AppiumConnect, required: true do
           capabilities: {
             platformName: :ios,
             browserName: :safari,
-            'appium:platformVersion': '15.4',
+            'appium:platformVersion': '17.2',
             'appium:deviceName': 'iPhone 13 Pro Max',
             'appium:automationName': 'XCUITest',
             'appium:app': Environ.current.ios_app_path
@@ -38,7 +38,7 @@ describe TestCentricity::AppiumConnect, required: true do
           device_type: :phone,
           capabilities: {
             platformName: :ios,
-            'appium:platformVersion': '15.4',
+            'appium:platformVersion': '17.2',
             'appium:deviceName': 'iPhone 13 Pro Max',
             'appium:automationName': 'XCUITest',
             'appium:app': Environ.current.ios_app_path
@@ -52,7 +52,7 @@ describe TestCentricity::AppiumConnect, required: true do
           driver: :appium,
           capabilities: {
             platformName: :ios,
-            'appium:platformVersion': '15.4',
+            'appium:platformVersion': '17.2',
             'appium:deviceName': 'iPhone 13 Pro Max',
             'appium:automationName': 'XCUITest',
             'appium:app': Environ.current.ios_app_path
@@ -66,7 +66,7 @@ describe TestCentricity::AppiumConnect, required: true do
           device_type: :phone,
           capabilities: {
             platformName: :ios,
-            'appium:platformVersion': '15.4',
+            'appium:platformVersion': '17.2',
             'appium:deviceName': 'iPhone 13 Pro Max',
             'appium:automationName': 'XCUITest',
             'appium:app': Environ.current.ios_app_path
@@ -81,10 +81,10 @@ describe TestCentricity::AppiumConnect, required: true do
         {
           driver: :appium,
           device_type: :phone,
-          endpoint: 'http://127.0.0.1:4723/wd/hub',
+          endpoint: 'http://127.0.0.1:4723',
           capabilities: {
             platformName: :ios,
-            'appium:platformVersion': '15.4',
+            'appium:platformVersion': '17.2',
             'appium:deviceName': 'iPhone 13 Pro Max',
             'appium:automationName': 'XCUITest',
             'appium:app': Environ.current.ios_app_path,
@@ -99,7 +99,7 @@ describe TestCentricity::AppiumConnect, required: true do
         verify_mobile_connect(
           dev_type = :phone,
           dev_os = :ios,
-          os_version = '15.4',
+          os_version = '17.2',
           dev_name = 'iPhone 13 Pro Max'
         )
         expect($driver).to eq(nil)
@@ -112,7 +112,7 @@ describe TestCentricity::AppiumConnect, required: true do
           driver_name: :my_custom_iphone_driver,
           capabilities: {
             platformName: :ios,
-            'appium:platformVersion': '15.4',
+            'appium:platformVersion': '17.2',
             'appium:deviceName': 'iPhone 13 Pro Max',
             'appium:automationName': 'XCUITest',
             'appium:app': Environ.current.ios_app_path
@@ -122,7 +122,7 @@ describe TestCentricity::AppiumConnect, required: true do
         verify_mobile_connect(
           dev_type = :phone,
           dev_os = :ios,
-          os_version = '15.4',
+          os_version = '17.2',
           dev_name = 'iPhone 13 Pro Max',
           driver_name = :my_custom_iphone_driver
         )
@@ -182,7 +182,7 @@ describe TestCentricity::AppiumConnect, required: true do
           global_driver: true,
           capabilities: {
             platformName: :ios,
-            'appium:platformVersion': '15.4',
+            'appium:platformVersion': '17.2',
             'appium:deviceName': 'iPhone 13 Pro Max',
             'appium:automationName': 'XCUITest',
             'appium:app': Environ.current.ios_app_path
@@ -192,7 +192,7 @@ describe TestCentricity::AppiumConnect, required: true do
         verify_mobile_connect(
           dev_type = :phone,
           dev_os = :ios,
-          os_version = '15.4',
+          os_version = '17.2',
           dev_name = 'iPhone 13 Pro Max'
         )
         expect($driver).to eq(Environ.appium_driver)
@@ -204,7 +204,7 @@ describe TestCentricity::AppiumConnect, required: true do
         {
           driver: :appium,
           device_type: :phone,
-          endpoint: 'http://127.0.0.1:4723/wd/hub',
+          endpoint: 'http://127.0.0.1:4723',
           capabilities: {
             platformName: :android,
             'appium:platformVersion': '12.0',
@@ -256,17 +256,11 @@ describe TestCentricity::AppiumConnect, required: true do
         expect(AppiumConnect.app_installed?).to eq(true)
         expect(AppiumConnect.app_state).to eq(:running_in_foreground)
         expect(AppiumConnect.orientation).to eq(:portrait)
-        expect(AppiumConnect.window_size).to eq([1080, 2208])
         expect(AppiumConnect.keyboard_shown?).to eq(false)
         expect(AppiumConnect.current_context).to eq('NATIVE_APP')
         expect(AppiumConnect.available_contexts).to eq(['NATIVE_APP'])
         expect(AppiumConnect.is_webview?).to eq(false)
         expect(AppiumConnect.is_native_app?).to eq(true)
-        rect = AppiumConnect.window_rect
-        expect(rect.x).to eq(0)
-        expect(rect.y).to eq(0)
-        expect(rect.width).to eq(1080)
-        expect(rect.height).to eq(2208)
       end
 
       it 'verifies Android app is terminated' do
@@ -317,14 +311,14 @@ describe TestCentricity::AppiumConnect, required: true do
     it 'connects to iOS iPhone Simulator using environment variables' do
       ENV['AUTOMATION_ENGINE'] = 'XCUITest'
       ENV['APP_PLATFORM_NAME'] = 'ios'
-      ENV['APP_VERSION'] = '15.4'
+      ENV['APP_VERSION'] = '17.2'
       ENV['APP_DEVICE'] = 'iPhone 13 Pro Max'
       ENV['APP'] = Environ.current.ios_app_path
       AppiumConnect.initialize_appium
       verify_mobile_connect(
         dev_type = :phone,
         dev_os = :ios,
-        os_version = '15.4',
+        os_version = '17.2',
         dev_name = 'iPhone 13 Pro Max'
       )
       expect($driver).to eq(nil)

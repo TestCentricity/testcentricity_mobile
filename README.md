@@ -8,7 +8,7 @@
 
 
 The TestCentricity™ Mobile core framework for native mobile iOS and Android app testing implements a Screen Object Model
-DSL for use with Cucumber (version 7.x or greater) and Appium. It also facilitates the configuration of the appropriate
+DSL for use with Cucumber (version 7.x or greater) and Appium 2.x. It also facilitates the configuration of the appropriate
 Appium capabilities and driver required to establish a connection with locally or cloud hosted iOS and Android real devices
 or simulators.
 
@@ -27,6 +27,15 @@ test targets:
 A complete history of bug fixes and new features can be found in the {file:CHANGELOG.md CHANGELOG} file.
 
 The RubyDocs for this gem can be found [here](https://www.rubydoc.info/gems/testcentricity_mobile/).
+
+Two example projects that demonstrates the implementation of a screen object model framework using Cucumber and TestCentricity™
+Mobile can be found at the following:
+  * [tc_mobile_react_native_demo](https://github.com/TestCentricity/tc_mobile_react_native_demo)
+  * [tc_mobile_wdio_demo](https://github.com/TestCentricity/tc_mobile_wdio_demo)
+
+Refer to [this wiki page](https://github.com/TestCentricity/testcentricity_mobile/wiki/XCUItest-driver-bug-impacts-iOS-dialogs-managed-by-com.apple.springboard) for
+information on a bug with the latest versions of the XCUItest driver that affects Appium's ability to interact with and
+verify iOS system level modal dialogs.
 
 
 ### Which gem should I use?
@@ -474,10 +483,19 @@ Single `AppUIElement` declarations have the following format:
     elementType :elementName, { locator_strategy: locator_identifier }
 
 * The `elementName` is the unique name that you will use to refer to the UI element and is specified as a `Symbol`.
-* The `locator_strategy` specifies the [selector strategy](https://appium.io/docs/en/commands/element/find-elements/index.html#selector-strategies) 
-that Appium will use to find the `AppUIElement`. Valid selectors are `accessibility_id:`, `id:`, `name:`, `class:`, `xpath:`, 
-`predicate:` (iOS only), `class_chain:` (iOS only), and `css:` (WebViews in hybrid apps only).
+* The `locator_strategy` specifies the selector strategy that Appium will use to find the `AppUIElement`. Valid selectors are:
+  - `accessibility_id:`
+  - `id:`
+  - `name:`
+  - `class:`
+  - `xpath:`
+  - `predicate:` (iOS only)
+  - `class_chain:` (iOS only)
+  - `css:` (WebViews in hybrid apps only).
 * The `locator_identifier` is the value or attribute that uniquely and unambiguously identifies the `AppUIElement`.
+
+Refer to [this page](https://appium.github.io/appium-xcuitest-driver/5.12/locator-strategies/) for information on selector strategies for iOS.
+Refer to [this page](https://github.com/appium/appium-uiautomator2-driver?tab=readme-ov-file#element-location) for information on selector strategies for Android.
 
 Multiple `AppUIElement` declarations for a collection of elements of the same type can be performed by passing a hash table
 containing the names and locators of each individual element.
@@ -974,6 +992,10 @@ Refer to [this page](https://appium.io/docs/en/2.4/guides/caps/) for information
 to invoking Cucumber to run your features/scenarios on locally hosted iOS or Android simulators or physical devices. Refer
 to [**section 8.2.3 (Starting and Stopping Appium Server)**](#starting-and-stopping-appium-server) below.
 
+⚠️ If you are running locally hosted mobile tests on iOS or Android simulators or devices using version 1.x of the Appium
+server, the `APPIUM_SERVER_VERSION` environment variable must be set to `1` in order to ensure that the correct Appium server
+endpoint is used.
+
 #### Connecting to Locally Hosted iOS Simulators or Physical Devices
 
 You can run your automated tests on locally hosted iOS simulators or physically connected devices using Appium and XCode
@@ -1190,6 +1212,13 @@ starting your Cucumber test suite(s):
 
     run_appium: APPIUM_SERVER=run
 
+If you are running locally hosted mobile tests on iOS or Android simulators or devices using version 1.x of the Appium server,
+the `APPIUM_SERVER_VERSION` environment variable must be set to `1` in order to ensure that the correct Appium server endpoint
+is used. This can be set by adding the following to your `cucumber.yml` file and including `-p appium_1x` in your command line
+when starting your Cucumber test suite(s):
+
+    appium_1x: APPIUM_SERVER_VERSION=1
+
 Refer to [**section 8.4 (Using Configuration Specific Profiles in `cucumber.yml`)**](#using-configuration-specific-profiles-in-cucumber-yml) below.
 
 
@@ -1210,6 +1239,10 @@ body of an example group:
       $server.stop if Environ.driver == :appium && $server.running?
     end
 ```
+If you are running locally hosted mobile tests on iOS or Android simulators or devices using version 1.x of the Appium server,
+the `APPIUM_SERVER_VERSION` environment variable must be set to `1` in order to ensure that the correct Appium server endpoint
+is used.
+
 
 ###  Connecting to Remote Cloud Hosted iOS and Android Simulators or Physical Devices
 
@@ -1632,6 +1665,7 @@ with access to your version control system.
     # physical devices
     #==============
     run_appium: APPIUM_SERVER=run
+    appium_1x: APPIUM_SERVER_VERSION=1
 
 
     #==============
@@ -1728,6 +1762,11 @@ run tests against an iPad Pro (12.9-inch) (5th generation) with iOS version 15.4
 You can ensure that Appium Server is running by including `-p run_appium` in your command line:
 
     cucumber -p ipad_pro_12_15_sim -p portrait -p run_appium
+
+If you are running locally hosted mobile tests using version 1.x of Appium server, you must include `-p appium_1x` in
+your command line:
+
+    cucumber -p ipad_pro_12_15_sim -p landscape -p run_appium -p appium_1x
 
 
 The following command specifies that Cucumber will run tests against a cloud hosted iPhone 13 Pro Max running iOS 15.4 on the
