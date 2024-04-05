@@ -36,19 +36,19 @@ debug: DEBUG=true
 # test profiles
 #==============
 
-rn_bat_ios: --profile rn_demo --profile bat --profile ios_sim --profile report
-rn_bat_android: --profile rn_demo --profile bat --profile android_sim --profile report
-rn_regress_ios: --profile rn_demo --profile ios_caps_sim
-rn_regress_android: --profile rn_demo --profile android_caps_sim
+rn_bat_ios: -p rn_demo -p bat -p ios_sim -p report
+rn_bat_android: -p rn_demo -p bat -p android_sim -p report
+rn_regress_ios: -p rn_demo -p regress -p ios_caps_sim
+rn_regress_android: -p rn_demo -p regress -p android_caps_sim
 
-rn_deeplink_bs_ios17: --profile rn_demo --tags '@bs_deeplink' --profile bs_iphone_iOS17_caps
-rn_deeplink_bs_ios16: --profile rn_demo --tags '@bs_deeplink' --profile bs_iphone_iOS16_caps
-rn_deeplink_bs_android: --profile rn_demo --tags '@bs_deeplink' --profile bs_android_phone_caps
+rn_deeplink_bs_ios17: -p rn_demo --tags '@bs_deeplink' -p bs_iphone_iOS17_caps
+rn_deeplink_bs_ios16: -p rn_demo --tags '@bs_deeplink' -p bs_iphone_iOS16_caps
+rn_deeplink_bs_android: -p rn_demo --tags '@bs_deeplink' -p bs_android_phone_caps
 
-wdio_bat_android: --profile wdio_demo --profile bat --profile android_sim --profile report
-wdio_bat_ios: --profile wdio_demo --profile bat --profile ios_sim --profile report
-wdio_regress_android: --profile wdio_demo --profile android_caps_sim
-wdio_regress_ios: --profile wdio_demo --profile ios_caps_sim
+wdio_bat_android: -p wdio_demo -p bat -p android_sim -p report
+wdio_bat_ios: -p wdio_demo -p bat -p ios_sim -p report
+wdio_regress_android: -p wdio_demo -p regress -p android_caps_sim
+wdio_regress_ios: -p wdio_demo -p regress -p ios_caps_sim
 
 
   #==============
@@ -88,13 +88,13 @@ android: PLATFORM=android --tags @android -r features/support/android -e feature
 # NOTE: Requires installation of XCode, iOS version specific target simulators, and Appium
 #==============
 
-appium_ios: DRIVER=appium --profile ios AUTOMATION_ENGINE=XCUITest APP_PLATFORM_NAME="iOS" NEW_COMMAND_TIMEOUT="30" APP_NO_RESET=true
-app_ios_15: --profile appium_ios APP_VERSION="15.4"
+appium_ios: DRIVER=appium -p ios AUTOMATION_ENGINE=XCUITest APP_PLATFORM_NAME="iOS" NEW_COMMAND_TIMEOUT="30" APP_NO_RESET=true
+app_ios_17: -p appium_ios APP_VERSION="17.2"
 
-iphone_13PM_15_sim: --profile app_ios_15 DEVICE_TYPE=phone APP_DEVICE="iPhone 13 Pro Max"
-ipad_pro_12_15_sim: --profile app_ios_15 DEVICE_TYPE=tablet APP_DEVICE="iPad Pro (12.9-inch) (5th generation)"
-ios_sim:            --profile iphone_13PM_15_sim --profile json --profile run_appium
-ios_caps_sim:       W3C_CAPS=iPhone --profile ios --profile yaml --profile run_appium
+iphone_13PM_17_sim: -p app_ios_17 DEVICE_TYPE=phone APP_DEVICE="iPhone 13 Pro Max"
+ipad_pro_12_17_sim: -p app_ios_17 DEVICE_TYPE=tablet APP_DEVICE="iPad Pro (12.9-inch) (6th generation)"
+ios_sim:            -p iphone_13PM_17_sim -p json -p run_appium
+ios_caps_sim:       W3C_CAPS=iPhone -p ios -p yaml -p run_appium
 
 
 #==============
@@ -102,11 +102,11 @@ ios_caps_sim:       W3C_CAPS=iPhone --profile ios --profile yaml --profile run_a
 # NOTE: Requires installation of Android Studio, Android version specific virtual device simulators, and Appium
 #==============
 
-appium_android:    DRIVER=appium --profile android AUTOMATION_ENGINE=UiAutomator2 APP_PLATFORM_NAME="Android" APP_NO_RESET=true
-app_android_12:    --profile appium_android APP_VERSION="12.0" CHROMEDRIVER_EXECUTABLE="/Users/Shared/config/webdrivers/chromedriver"
-pixel_5_api31_sim: --profile app_android_12 DEVICE_TYPE=phone APP_DEVICE="Pixel_5_API_31"
-android_sim:       --profile pixel_5_api31_sim --profile json --profile run_appium
-android_caps_sim:  W3C_CAPS=android_phone --profile android --profile yaml --profile run_appium
+appium_android:    DRIVER=appium -p android AUTOMATION_ENGINE=UiAutomator2 APP_PLATFORM_NAME="Android" APP_NO_RESET=true
+app_android_12:    -p appium_android APP_VERSION="12.0" CHROMEDRIVER_EXECUTABLE="/Users/Shared/config/webdrivers/chromedriver"
+pixel_5_api31_sim: -p app_android_12 DEVICE_TYPE=phone APP_DEVICE="Pixel_5_API_31"
+android_sim:       -p pixel_5_api31_sim -p json -p run_appium
+android_caps_sim:  W3C_CAPS=android_phone -p android -p yaml -p run_appium
 
 
 #==============
@@ -116,16 +116,16 @@ android_caps_sim:  W3C_CAPS=android_phone --profile android --profile yaml --pro
 browserstack: DRIVER=browserstack TEST_CONTEXT="TestCentricity - BrowserStack"
 
 # BrowserStack iOS real device native app profiles
-bs_ios:          --profile browserstack --profile ios BS_OS=ios <%= mobile %>
-bs_iphone:       --profile bs_ios DEVICE_TYPE=phone
-bs_iphone_iOS17: --profile bs_iphone BS_OS_VERSION="17" BS_DEVICE="iPhone 15 Pro Max"
-bs_iphone_iOS17_caps: W3C_CAPS=bs_iPhoneOS17 --profile ios --profile yaml
-bs_iphone_iOS16_caps: W3C_CAPS=bs_iPhoneOS16 --profile ios --profile yaml
+bs_ios:          -p browserstack -p ios BS_OS=ios <%= mobile %>
+bs_iphone:       -p bs_ios DEVICE_TYPE=phone
+bs_iphone_iOS17: -p bs_iphone BS_OS_VERSION="17" BS_DEVICE="iPhone 15 Pro Max"
+bs_iphone_iOS17_caps: W3C_CAPS=bs_iPhoneOS17 -p ios -p yaml
+bs_iphone_iOS16_caps: W3C_CAPS=bs_iPhoneOS16 -p ios -p yaml
 
 # BrowserStack Android real device native app profiles
-bs_android: --profile browserstack --profile android BS_OS=android <%= mobile %>
-bs_pixel5:  --profile bs_android BS_DEVICE="Google Pixel 5" BS_OS_VERSION="12.0" DEVICE_TYPE=phone
-bs_android_phone_caps: W3C_CAPS=bs_android_phone --profile android --profile yaml
+bs_android: -p browserstack -p android BS_OS=android <%= mobile %>
+bs_pixel5:  -p bs_android BS_DEVICE="Google Pixel 5" BS_OS_VERSION="12.0" DEVICE_TYPE=phone
+bs_android_phone_caps: W3C_CAPS=bs_android_phone -p android -p yaml
 
 #==============
 # profiles for remotely hosted devices on the SauceLabs service
@@ -134,13 +134,13 @@ bs_android_phone_caps: W3C_CAPS=bs_android_phone --profile android --profile yam
 saucelabs: DRIVER=saucelabs DATA_CENTER="us-west-1" AUTOMATE_PROJECT="TestCentricity - SauceLabs"
 
 # SauceLabs iOS real device native app profiles
-sl_ios:           --profile saucelabs --profile ios SL_OS=ios <%= mobile %>
-sl_iphone:        --profile sl_ios DEVICE_TYPE=phone
-sl_iphone13PM_15: --profile sl_iphone SL_DEVICE="iPhone 13 Pro Max Simulator" SL_OS_VERSION="15.4"
+sl_ios:           -p saucelabs -p ios SL_OS=ios <%= mobile %>
+sl_iphone:        -p sl_ios DEVICE_TYPE=phone
+sl_iphone13PM_15: -p sl_iphone SL_DEVICE="iPhone 13 Pro Max Simulator" SL_OS_VERSION="15.4"
 
 # SauceLabs Android real device native app profiles
-sl_android: --profile saucelabs --profile android SL_OS=android <%= mobile %>
-sl_pixel5:  --profile sl_android SL_DEVICE="Google Pixel 5 GoogleAPI Emulator" SL_OS_VERSION="12.0" DEVICE_TYPE=phone
+sl_android: -p saucelabs -p android SL_OS=android <%= mobile %>
+sl_pixel5:  -p sl_android SL_DEVICE="Google Pixel 5 GoogleAPI Emulator" SL_OS_VERSION="12.0" DEVICE_TYPE=phone
 
 
 #==============
@@ -150,13 +150,13 @@ sl_pixel5:  --profile sl_android SL_DEVICE="Google Pixel 5 GoogleAPI Emulator" S
 testingbot: DRIVER=testingbot AUTOMATE_PROJECT="TestCentricity - TestingBot"
 
 # TestingBot iOS real device native app profiles
-tb_ios:               --profile testingbot --profile ios TB_OS=iOS <%= mobile %>
-tb_iphone:            --profile tb_ios DEVICE_TYPE=phone
-tb_iphone11_14_dev:   --profile tb_iphone TB_OS_VERSION="14.0" TB_DEVICE="iPhone 11" REAL_DEVICE=true
-tb_iphone11_14_sim:   --profile tb_iphone TB_OS_VERSION="14.2" TB_DEVICE="iPhone 11"
-tb_iphone13PM_15_sim: --profile tb_iphone TB_OS_VERSION="15.4" TB_DEVICE="iPhone 13 Pro Max"
+tb_ios:               -p testingbot -p ios TB_OS=iOS <%= mobile %>
+tb_iphone:            -p tb_ios DEVICE_TYPE=phone
+tb_iphone11_14_dev:   -p tb_iphone TB_OS_VERSION="14.0" TB_DEVICE="iPhone 11" REAL_DEVICE=true
+tb_iphone11_14_sim:   -p tb_iphone TB_OS_VERSION="14.2" TB_DEVICE="iPhone 11"
+tb_iphone13PM_15_sim: -p tb_iphone TB_OS_VERSION="15.4" TB_DEVICE="iPhone 13 Pro Max"
 
 # TestingBot Android real device native app profiles
-tb_android:    --profile testingbot --profile android TB_OS=Android <%= mobile %>
-tb_pixel_dev:  --profile tb_android TB_DEVICE="Pixel" TB_OS_VERSION="9.0" DEVICE_TYPE=phone REAL_DEVICE=true
-tb_pixel6_sim: --profile tb_android TB_DEVICE="Pixel 6" TB_OS_VERSION="12.0" DEVICE_TYPE=phone
+tb_android:    -p testingbot -p android TB_OS=Android <%= mobile %>
+tb_pixel_dev:  -p tb_android TB_DEVICE="Pixel" TB_OS_VERSION="9.0" DEVICE_TYPE=phone REAL_DEVICE=true
+tb_pixel6_sim: -p tb_android TB_DEVICE="Pixel 6" TB_OS_VERSION="12.0" DEVICE_TYPE=phone

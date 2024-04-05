@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 
 
+## [4.0.3] - 05-APR-2024
+
+### Fixed
+
+* `AppiumConnect.initialize_appium`, `AppiumServer.start`, and `AppiumServer.running?` methods now support Appium version 2.x.
+Backward compatibility with Appium version 1.x is provided if `APPIUM_SERVER_VERSION` Environment Variable is set to `1`.
+
+
 ## [4.0.2] - 27-MAR-2024
 
 ### Changed

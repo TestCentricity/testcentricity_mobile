@@ -25,11 +25,7 @@ class GeoLocationScreen < BaseRNDemoAppScreen
         caption: 'Geo Location',
         exists: true,
         disabled: false,
-        hidden: false,
-        width: 428,
-        height: 86,
-        x: 0,
-        y: 70
+        hidden: false
       },
       start_observing_button => {
         visible: true,
