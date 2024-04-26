@@ -214,7 +214,7 @@ module TestCentricity
     # @return [Boolean] TRUE if keyboard is shown. Return false if keyboard is hidden.
     #
     def self.keyboard_shown?
-      driver.driver.keyboard_shown?
+      @driver.execute_script('mobile: isKeyboardShown')
     end
 
     # Get the current screen orientation

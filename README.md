@@ -33,22 +33,23 @@ Mobile can be found at the following:
   * [tc_mobile_react_native_demo](https://github.com/TestCentricity/tc_mobile_react_native_demo)
   * [tc_mobile_wdio_demo](https://github.com/TestCentricity/tc_mobile_wdio_demo)
 
-Refer to [this wiki page](https://github.com/TestCentricity/testcentricity_mobile/wiki/XCUItest-driver-bug-impacts-iOS-dialogs-managed-by-com.apple.springboard) for
-information on a bug with the latest versions of the XCUItest driver that affects Appium's ability to interact with and
-verify iOS system level modal dialogs.
+Refer to [this wiki page](https://github.com/TestCentricity/testcentricity_mobile/wiki/XCUItest-driver-bug-impacts-iOS-dialogs-managed-by-com.apple.springboard) for information on a bug with the latest versions of the XCUItest driver that affects Appium's
+ability to interact with and verify iOS system level modal dialogs.
 
 
 ### Which gem should I use?
 
 * The [TestCentricity **Mobile** gem](https://rubygems.org/gems/testcentricity_mobile) only supports testing of native iOS and Android mobile apps
+* The [TestCentricity **Apps** gem](https://rubygems.org/gems/testcentricity_apps) only supports testing of MacOS desktop apps and native iOS and Android mobile apps
 * The [TestCentricity **Web** gem](https://rubygems.org/gems/testcentricity_web) only supports testing of web interfaces via desktop and mobile web browsers
 * The TestCentricity gem supports testing of native mobile apps and/or web interfaces via desktop and mobile web browsers.
 
-| Tested platforms                                   | TestCentricity Mobile | TestCentricity Web | TestCentricity |
-|----------------------------------------------------|-----------------------|--------------------|----------------|
-| Native mobile iOS and/or Android apps only         | Yes                   | No                 | No             |
-| Desktop/mobile web browsers only                   | No                    | Yes                | No             |
-| Native mobile apps and desktop/mobile web browsers | No                    | No                 | Yes            |
+| Tested platforms                                   | TestCentricity Mobile | TestCentricity Apps | TestCentricity Web | TestCentricity |
+|----------------------------------------------------|-----------------------|---------------------|--------------------|----------------|
+| Native mobile iOS and/or Android apps only         | Yes                   | Yes                 | No                 | No             |
+| MacOS desktop apps                                 | No                    | Yes                 | No                 | No             |
+| Desktop/mobile web browsers only                   | No                    | No                  | Yes                | No             |
+| Native mobile apps and desktop/mobile web browsers | No                    | No                  | No                 | Yes            |
 
 
 ## Installation
