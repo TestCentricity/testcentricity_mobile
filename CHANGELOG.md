@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 
 
+## [4.0.4] - 26-APR-2024
+
+### Changed
+
+* Updated `selenium-webdriver` gem to version 4.20.0.
+* Updated `appium_lib` gem to version 15.0.0.
+* Updated `appium_lib_core` gem to version 8.0.1.
+* No longer using deprecated Appium `driver.keyboard_shown?` method.
+
+
 ## [4.0.3] - 05-APR-2024
 
 ### Fixed

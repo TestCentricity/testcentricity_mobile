@@ -125,7 +125,8 @@ module TestCentricity
                      ui_object.count
                    when :buttons
                      ui_object.buttons
-
+                   else
+                     raise "#{property} is not a valid property"
                    end
           error_msg = "Expected UI object '#{ui_object.get_name}' (#{ui_object.get_locator}) #{property} property to"
           ExceptionQueue.enqueue_comparison(ui_object, state, actual, error_msg)

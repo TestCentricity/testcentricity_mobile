@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.requirements  << 'Appium'
 
   spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'cucumber', '9.1.2'
+  spec.add_development_dependency 'cucumber', '9.2.0'
   spec.add_development_dependency 'parallel_tests'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'require_all', '=1.5.0'
@@ -39,13 +39,13 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', ['~> 0.18']
   spec.add_development_dependency 'yard', ['>= 0.9.0']
 
-  spec.add_runtime_dependency 'appium_lib', '~> 14.0.0'
+  spec.add_runtime_dependency 'appium_lib', '~> 15.0.0'
   spec.add_runtime_dependency 'childprocess'
   spec.add_runtime_dependency 'chronic', '0.10.2'
   spec.add_runtime_dependency 'faker'
   spec.add_runtime_dependency 'i18n'
   spec.add_runtime_dependency 'json'
-  spec.add_runtime_dependency 'selenium-webdriver', '4.19.0'
+  spec.add_runtime_dependency 'selenium-webdriver', '4.20.0'
   spec.add_runtime_dependency 'test-unit'
   spec.add_runtime_dependency 'virtus'
 end
