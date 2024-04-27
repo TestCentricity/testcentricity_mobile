@@ -420,9 +420,7 @@ module TestCentricity
     #   bar_chart_section.disabled?
     #
     def disabled?
-      section = find_section
-      section_not_found_exception(section)
-      section.enabled?
+      !enabled?
     end
 
     # Is screen Section object visible?
