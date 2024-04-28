@@ -17,7 +17,8 @@ class SortByMenu < TestCentricity::ScreenSection
     ui = {
       self => {
         visible: true,
-        enabled: true
+        enabled: true,
+        disabled: false
       },
       sort_by_label => {
         visible: true,

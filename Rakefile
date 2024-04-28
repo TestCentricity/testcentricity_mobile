@@ -149,7 +149,8 @@ desc 'Run all specs and Cucumber features'
 task all: [:required_specs,
            :browserstack_specs,
            :custom_driver_specs,
-           :smoke,
+           :wdio_bat_ios,
+           :rn_bat_android,
            :device_deeplink,
            :regress]
 
