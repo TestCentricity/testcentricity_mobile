@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 
 
+## [4.0.5] - 29-APR-2024
+
+### Fixed
+
+* `ScreenSection.disabled?` no longer returns wrong values.
+
+
 ## [4.0.4] - 26-APR-2024
 
 ### Changed
