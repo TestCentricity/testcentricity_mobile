@@ -20,14 +20,14 @@ module TestCentricity
     end
 
     def get_locator
-      if @locator.zero? && defined?(section_locator)
-        my_locator = section_locator
-      else
-        my_locator = @locator
-      end
+      my_locator = if @locator.zero? && defined?(section_locator)
+                     section_locator
+                   else
+                     @locator
+                   end
       locators = []
       if @context == :section && !@parent.nil?
-        locators.push(@parent.get_locator)
+        locators = @parent.get_locator
       end
 
       if @parent_list.nil?
@@ -578,11 +578,10 @@ module TestCentricity
       locators.each do |loc|
         if obj.nil?
           obj = find_element(loc.keys[0], loc.values[0])
-          puts "Found object #{loc}" if ENV['DEBUG']
         else
           obj = obj.find_element(loc.keys[0], loc.values[0])
-          puts "Found object #{loc}" if ENV['DEBUG']
         end
+        puts "Found section object #{loc}" if ENV['DEBUG']
       end
       obj
     rescue
