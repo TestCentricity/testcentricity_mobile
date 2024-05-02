@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 
 
+## [4.0.6] - 02-MAY-2024
+
+### Fixed
+
+* `ScreenSection.find_section` is now able to find `ScreenSection` objects embedded within other `ScreenSections`.
+
+
 ## [4.0.5] - 29-APR-2024
 
 ### Fixed
