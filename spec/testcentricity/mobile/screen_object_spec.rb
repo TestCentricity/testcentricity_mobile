@@ -52,6 +52,10 @@ describe TestCentricity::ScreenObject, required: true do
       expect(@test_screen).to respond_to(:check1)
     end
 
+    it 'responds to radio' do
+      expect(@test_screen).to respond_to(:radio1)
+    end
+
     it 'responds to section' do
       expect(@test_screen).to respond_to(:section1)
     end

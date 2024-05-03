@@ -508,15 +508,16 @@ Supported `AppUIElement` elementTypes and their declarations have the following 
 *Single element declarations:*
 ```ruby
     class SampleScreen < TestCentricity::ScreenObject
-      button     :button_name, { locator_strategy: locator_identifier }
-      textfield  :field_name, { locator_strategy: locator_identifier }
-      checkbox   :checkbox_name, { locator_strategy: locator_identifier }
-      label      :label_name, { locator_strategy: locator_identifier }
-      list       :list_name, { locator_strategy: locator_identifier }
-      image      :image_name, { locator_strategy: locator_identifier }
-      switch     :switch_name, { locator_strategy: locator_identifier }
-      element    :element_name, { locator_strategy: locator_identifier }
-      alert      :alert_name, { locator_strategy: locator_identifier }
+      button    :button_name, { locator_strategy: locator_identifier }
+      textfield :field_name, { locator_strategy: locator_identifier }
+      checkbox  :checkbox_name, { locator_strategy: locator_identifier }
+      radio     :radio_name, { locator_strategy: locator_identifier }
+      label     :label_name, { locator_strategy: locator_identifier }
+      list      :list_name, { locator_strategy: locator_identifier }
+      image     :image_name, { locator_strategy: locator_identifier }
+      switch    :switch_name, { locator_strategy: locator_identifier }
+      element   :element_name, { locator_strategy: locator_identifier }
+      alert     :alert_name, { locator_strategy: locator_identifier }
     end
 ```
 *Multiple element declarations:*
@@ -531,6 +532,8 @@ Supported `AppUIElement` elementTypes and their declarations have the following 
       checkboxes check_1_name: { locator_strategy: locator_identifier },
                  check_2_name: { locator_strategy: locator_identifier },
                  check_X_name: { locator_strategy: locator_identifier }
+      radios     radio_1_name: { locator_strategy: locator_identifier },
+                 radio_X_name: { locator_strategy: locator_identifier }
       labels     label_1_name: { locator_strategy: locator_identifier },
                  label_X_name: { locator_strategy: locator_identifier }
       images     image_1_name: { locator_strategy: locator_identifier },
@@ -593,8 +596,8 @@ above) for each `AppUIElement` that needs to be interacted with.
 The `ScreenObject.populate_data_fields` and `ScreenSection.populate_data_fields` methods support the entry of test data
 into a collection of `AppUIElements`. The `populate_data_fields` method accepts a hash containing key/hash pairs of
 `AppUIElements` and their associated data to be entered. Data values must be in the form of a `String` for `textfield`
-controls. For `checkbox` controls, data must either be a `Boolean` or a `String` that evaluates to a `Boolean` value (Yes,
-No, 1, 0, true, false).
+controls. For `checkbox`, `radio`, and `switch` controls, data must either be a `Boolean` or a `String` that evaluates to
+a `Boolean` value ('Yes', 'No', '1', '0', 'true', 'false').
 
 The `populate_data_fields` method verifies that data attributes associated with each `AppUIElement` is not `nil` or `empty`
 before attempting to enter data into the `AppUIElement`.

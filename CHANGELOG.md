@@ -2,6 +2,22 @@
 All notable changes to this project will be documented in this file.
 
 
+## [4.0.7] - 05-MAY-2024
+
+### Added
+* Added support for radio buttons via the `AppRadio` UI element class and the following methods:
+  * `ScreenObject.radio`
+  * `ScreenObject.radios`
+  * `ScreenSection.radio`
+  * `ScreenSection.radios`
+* `ScreenObject.populate_data_fields` and `ScreenSection.populate_data_fields` methods now support radio buttons.
+
+### Changed
+
+* Updated `selenium-webdriver` gem to version 4.20.1.
+* Updated `appium_lib_core` gem to version 8.0.2.
+
+
 ## [4.0.6] - 02-MAY-2024
 
 ### Fixed

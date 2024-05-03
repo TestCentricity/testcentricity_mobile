@@ -140,6 +140,30 @@ module TestCentricity
       end
     end
 
+    # Declare and instantiate a single radio button UI Element for this screen object.
+    #
+    # @param element_name [Symbol] name of radio button object (as a symbol)
+    # @param locator [Hash] { locator_strategy: locator_identifier }
+    # @example
+    #   radio :unicode_radio, { xpath: '//XCUIElementTypeRadioButton[@label="Unicode"]'}
+    #
+    def self.radio(element_name, locator)
+      define_screen_element(element_name, TestCentricity::AppElements::AppRadio, locator)
+    end
+
+    # Declare and instantiate a collection of radio buttons for this screen object.
+    #
+    # @param element_hash [Hash] names of radio buttons (as symbol) and locator Hash
+    # @example
+    #   radios unicode_radio: { xpath: '//XCUIElementTypeRadioButton[@label="Unicode"]'},
+    #          ascii_radio:   { xpath: '//XCUIElementTypeRadioButton[@label="ASCII"] }
+    #
+    def self.radios(element_hash)
+      element_hash.each do |element_name, locator|
+        radio(element_name, locator)
+      end
+    end
+
     # Declare and instantiate a single label UI Element for this screen object.
     #
     # @param element_name [Symbol] name of label object (as a symbol)

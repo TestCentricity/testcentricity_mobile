@@ -98,6 +98,10 @@ describe TestCentricity::ScreenSection, required: true do
       expect(@test_section).to respond_to(:check1)
     end
 
+    it 'responds to radio' do
+      expect(@test_section).to respond_to(:radio1)
+    end
+
     it 'responds to section' do
       expect(@test_section).to respond_to(:section2)
     end
