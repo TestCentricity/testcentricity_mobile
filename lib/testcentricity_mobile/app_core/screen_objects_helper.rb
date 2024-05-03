@@ -21,9 +21,9 @@ module TestCentricity
     end
 
     # Populate the specified UI elements on this screen or section object with the associated data from a Hash passed as
-    # an argument. Data values must be in the form of a String for textfield controls. For checkboxes and switches, data
-    # must either be a Boolean or a String that evaluates to a Boolean value (Yes, No, 1, 0, true, false). For screen section
-    # objects, data values must be a String, and the screen section object must have a set method defined.
+    # an argument. Data values must be in the form of a String for textfield controls. For checkboxes,radios, and switches,
+    # data must either be a Boolean or a String that evaluates to a Boolean value (Yes, No, 1, 0, true, false). For screen
+    # section objects, data values must be a String, and the screen section object must have a set method defined.
     #
     # The optional wait_time parameter is used to specify the time (in seconds) to wait for each UI element to become
     # visible before entering the associated data value. This option is useful in situations where entering data, or
@@ -59,6 +59,8 @@ module TestCentricity
             case data_field.get_object_type
             when :checkbox
               data_field.set_checkbox_state(data_param.to_bool)
+            when :radio
+              data_field.set_selected_state(data_param.to_bool)
             when :textfield
               data_field.clear
               data_field.set(data_param)
