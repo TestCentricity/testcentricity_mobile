@@ -11,7 +11,7 @@ Feature:  App screen deep links
     Given I have launched the SauceLabs My Demo app
 
 
-  Scenario Outline:  Verify screen can be directly accessed via deep link
+  Scenario Outline:  Verify <destination> screen can be directly accessed via deep link
     Given I am on the <start> screen
     When I load the <destination> screen
     Then I expect the <destination> screen to be correctly displayed
@@ -47,7 +47,7 @@ Feature:  App screen deep links
 
 
 @bat
-  Scenario Outline:  Verify empty and populated Cart screen can be directly accessed via deep links
+  Scenario Outline:  Verify <state> Cart screen can be directly accessed via deep links
     Given I am on the Products screen
     And the shopping cart is <state>
     When I load the Cart screen

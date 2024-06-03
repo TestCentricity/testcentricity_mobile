@@ -439,7 +439,11 @@ module TestCentricity
         caps[:'appium:appActivity'] = ENV['APP_ACTIVITY'] if ENV['APP_ACTIVITY']
         caps[:'appium:appPackage'] = ENV['APP_PACKAGE'] if ENV['APP_PACKAGE']
         caps[:'appium:forceSimulatorSoftwareKeyboardPresence'] = ENV['SHOW_SIM_KEYBOARD'] if ENV['SHOW_SIM_KEYBOARD']
-        caps[:'appium:webviewConnectTimeout'] = '90000'
+        if Environ.is_ios?
+          caps[:'appium:webviewConnectTimeout'] = 90000
+          caps[:'appium:maxTypingFrequency'] = 15
+          caps[:'appium:respectSystemAlerts'] = true
+        end
 
         if ENV['BUNDLE_ID']
           caps[:'appium:bundleId'] = ENV['BUNDLE_ID']

@@ -379,36 +379,34 @@ module TestCentricity
       url = if deep_link.include?("://")
               deep_link
             elsif !Environ.current.deep_link_prefix.blank?
-              link_url = "#{Environ.current.deep_link_prefix}://#{deep_link}"
-              # deeplink handler for Android devices
-              if Environ.is_android?
-                Environ.appium_driver.execute_script('mobile:deepLink', { url: link_url, package: Environ.current.android_app_id })
-                verify_screen_exists
-                return
-              else
-                link_url
-              end
+              "#{Environ.current.deep_link_prefix}://#{deep_link}"
             end
-      # deeplink handler for iOS devices
-      if Environ.is_ios? && Environ.is_device? && Environ.device_os_version.to_f < 16.4
-        # launch Safari browser on iOS real device if iOS version is below 16.4
-        Environ.appium_driver.execute_script('mobile: launchApp', { bundleId: 'com.apple.mobilesafari' })
-        unless Environ.appium_driver.is_keyboard_shown
-          begin
-            # attempt to find and click URL button on iOS 15 Safari browser
-            find_element(:accessibility_id, 'TabBarItemTitle').click
-          rescue
-            # fall back to URL button on iOS 14 Safari browser
-            find_element(:xpath, '//XCUIElementTypeButton[@name="URL"]').click
+
+      if Environ.is_android?
+        Environ.appium_driver.execute_script('mobile:deepLink', { url: url, package: Environ.current.android_app_id })
+      elsif Environ.is_ios?
+        if Environ.is_device? && Environ.device_os_version.to_f < 16.4
+          # launch Safari browser on iOS real device if iOS version is below 16.4
+          Environ.appium_driver.execute_script('mobile: launchApp', { bundleId: 'com.apple.mobilesafari' })
+          unless Environ.appium_driver.is_keyboard_shown
+            begin
+              # attempt to find and click URL button on iOS 15 Safari browser
+              find_element(:accessibility_id, 'TabBarItemTitle').click
+            rescue
+              # fall back to URL button on iOS 14 Safari browser
+              find_element(:xpath, '//XCUIElementTypeButton[@name="URL"]').click
+            end
           end
+          # enter deep-link URL
+          wait_for_object(:xpath, '//XCUIElementTypeTextField[@name="URL"]', 5).send_keys("#{url}\uE007")
+          # wait for and accept the popup modal
+          wait_for_object(:xpath, '//XCUIElementTypeButton[@name="Open"]', 10).click
+        else
+          # iOS version is >= 16.4 so directly load screen via deepLink
+          Environ.appium_driver.get(url)
         end
-        # enter deep-link URL
-        wait_for_object(:xpath, '//XCUIElementTypeTextField[@name="URL"]', 5).send_keys("#{url}\uE007")
-        # wait for and accept the popup modal
-        wait_for_object(:xpath, '//XCUIElementTypeButton[@name="Open"]', 10).click
       else
-        # iOS version is >= 16.4 so directly load screen via Selenium WebDriver
-        Environ.appium_driver.get(url)
+        raise "#{Environ.device_os} is not supported"
       end
       verify_screen_exists
     end

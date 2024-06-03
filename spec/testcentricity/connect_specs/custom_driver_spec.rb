@@ -13,7 +13,7 @@ RSpec.describe TestCentricity::AppiumConnect, custom: true do
     ENV['AUTOMATE_BUILD'] = "Version #{TestCentricityMobile::VERSION}"
   end
 
-  context 'Connect to user-defined web browsers using W3C desired_capabilities hash' do
+  context 'Connect to user-defined cloud hosting service using W3C desired_capabilities hash' do
     it 'raises exception when no capabilities are defined' do
       options = {
         driver: :custom,

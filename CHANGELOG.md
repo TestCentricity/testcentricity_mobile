@@ -2,6 +2,26 @@
 All notable changes to this project will be documented in this file.
 
 
+## [4.0.8] - 03-JUNE-2024
+
+### Fixed
+
+* When testing using locally hosted iOS simulators or physical devices, and when not passing an options hash to specify 
+desired capabilities, the `AppiumConnect.initialize_appium` method now correctly sets the following XCUItest capabilities:
+  * `appium:webviewConnectTimeout` capability is now correctly specified as an `Integer`
+  * `appium:maxTypingFrequency` set to 15 keystrokes per minute to resolve an issue where characters are intermittently
+    dropped during text entry by `AppUIElement.set`, `AppUIElement.send_keys`, or `BaseScreenSectionObject.populate_data_fields`
+    methods.
+* `AppList.list_item` attribute now defaults to `XCUIElementTypeOther`class for iOS/iPadOS platform and `android.view.ViewGroup`
+class for Android platform.
+
+### Changed
+
+* Updated `appium_lib` gem to version 15.1.0.
+* Updated `appium_lib_core` gem to version 9.1.1.
+* Updated `selenium-webdriver` gem to version 4.21.1.
+
+
 ## [4.0.7] - 05-MAY-2024
 
 ### Added

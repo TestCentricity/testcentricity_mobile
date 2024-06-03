@@ -492,6 +492,7 @@ Single `AppUIElement` declarations have the following format:
   - `xpath:`
   - `predicate:` (iOS only)
   - `class_chain:` (iOS only)
+  - `uiautomator:` (Android only)
   - `css:` (WebViews in hybrid apps only).
 * The `locator_identifier` is the value or attribute that uniquely and unambiguously identifies the `AppUIElement`.
 
@@ -606,10 +607,10 @@ The optional `wait_time` parameter is used to specify the time (in seconds) to w
 viable for data entry (the `AppUIElement` must be visible and enabled) before entering the associated data value. This
 option is useful in situations where entering data, or setting the state of a `AppUIElement` might cause other `AppUIElements`
 to become visible or active. Specifying a wait_time value ensures that the subsequent `AppUIElements` will be ready to
-be interacted with as states are changed. If the wait time is `nil`, then the wait time will be 5 seconds.
+be interacted with as states are changed. If the wait time is `nil`, then the default wait time will be 5 seconds.
 
 If any of the specified UI elements are not currently visible, the `populate_data_fields` method will attempt to scroll
-the UI object in view on the vertical axis (down, then up).
+the UI object into view on the vertical axis (scrolls down until found, then scrolls up if not found).
 ```ruby
     def enter_data(user_data)
       fields = {
@@ -642,8 +643,8 @@ containing key/hash pairs of UI elements and their properties or attributes to b
      verify_ui_states(ui)
 ```
 The `verify_ui_states` method automatically scrolls UI elements that are expected to be visible into view. Auto-scrolling
-only occurs on the vertical axis (down, then up). Setting the `auto_scroll` parameter to `false` prevents automatic scrolling
-from occurring.
+only occurs on the vertical axis (scrolls down until found, then scrolls up if not found). Setting the `auto_scroll` parameter
+to `false` prevents automatic scrolling from occurring.
 
 The `verify_ui_states` method queues up any exceptions that occur while verifying each object's properties until all
 `AppUIElements`and their properties have been checked, and then posts any exceptions encountered upon completion. Posted
@@ -677,6 +678,15 @@ The `verify_ui_states` method supports the following property/state pairs:
 **Checkboxes and Switches:**
 
     :checked Boolean
+
+**Radio Buttons:**
+
+    :selected Boolean
+
+**Lists and SelectLists**
+
+    :items     Array of Strings
+    :itemcount Integer
 
 #### Comparison States
 
@@ -829,6 +839,195 @@ Baseline translation strings are stored in `.yml` files in the `config/locales/`
         └── README.md
 
 
+### Working With Custom AppUIElements
+
+#### Vertical Scrolling ListView
+
+`AppUIElements` like ListViews (`AppList` class) are typically made up of multiple composite UI component types, which will
+be different for iOS vs. Android mobile platforms. Below is an example of the vertical scrolling ListView implementations
+for a cross-platform application implemented using React Native (iOS version on the left, Android version on the right).
+Each ListView contains 30 items:
+
+![Vertical Scrolling ListView](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/ListViews.png "Vertical Scrolling ListViews")
+
+While the iOS and Android ListViews appear to be identical in the app, performing an inspection of each application's GUI
+using Appium Inspector reveals differences in the object hierarchy as depicted below (iOS version on left, Android version
+on the right):
+
+![Vertical Scrolling ListView Hierarchy](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/ListHeirarchy.png "Vertical Scrolling ListView Hierarchy")
+
+The inspection of the ListView object hierarchy reveals that for the iOS version of the app, list items are made up of
+`XCUIElementTypeOther` objects, and that for the Android version of the app, list items are made up of `android.view.ViewGroup`
+objects.
+
+The other, more notable difference is that while the iOS inspection shows all 30 list items, only 13 list items are shown
+in the inspection of the Android app, which corresponds to the list items that are visible on the Android device screen.
+When testing Android apps using the `UiAutomator2` driver for Appium, UI objects that are not displayed on screen cannot
+be detected by Appium Inspector or by Appium based frameworks until the objects are scrolled into view.
+
+The `AppList.define_list_elements` method provides a means of specifying the objects that make up the list item components
+of an `AppList` control, and the axis in which scrolling of the list items occurs. The method accepts a hash that can contain
+up to two key-value pairs. Valid key designators are `:list_item`and `:scrolling`. The `AppList.define_list_elements` method
+is typically called in the `initialize` method of the `ScreenObject` or `ScreenSection` that contains the associated `AppList`
+control.
+
+The code snippets below demonstrate the use of the `AppList.define_list_elements` method in the `CloudListScreen` screen
+object's `initialize` method to define the list item components that make up the Clouds vertical scrolling ListView from
+the above examples. It is not necessary to specify the scroll axis in the code below, as `:vertical` is the default scroll
+axis that is set when instantiating an `AppList` element.
+
+iOS Cloud List `ScreenObject`
+```ruby
+    class CloudListScreen < ScreenObject
+      trait(:screen_name)    { 'Cloud List' }
+      trait(:screen_locator) { { class_chain: '**/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther' } }
+
+      # Cloud List screen UI elements
+      list :cloud_list, { class_chain: '**/XCUIElementTypeScrollView/XCUIElementTypeOther' }
+
+      def initialize
+        super
+        # define the list item element for the Cloud list object
+        list_spec = { list_item: { class: 'XCUIElementTypeOther' } }
+        cloud_list.define_list_elements(list_spec)
+      end
+    end
+```
+
+Android CloudListScreen `ScreenObject`
+```ruby
+    class CloudListScreen < ScreenObject
+      trait(:screen_name)    { 'Cloud List' }
+      trait(:screen_locator) { { xpath: '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.view.ViewGroup' } }
+
+      # Cloud List screen UI elements
+      list :cloud_list, { xpath: '//android.widget.ScrollView/android.view.ViewGroup' }
+
+      def initialize
+        super
+        # define the list item element for the Cloud list object
+        list_spec = { list_item: { class: 'android.view.ViewGroup' } }
+        cloud_list.define_list_elements(list_spec)
+      end
+    end
+```
+
+
+#### Horizontal Scrolling ListView
+
+Below is an example of a horizontal scrolling "Carousel" style ListView implementations on the Swipe screen of a cross-platform
+application. Each ListView contains 6 list items.
+
+![Horizontal Scrolling Carousel ListView](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/Carousel.png "Horizontal Scrolling Carousel ListViews")
+
+While the iOS and Android ListViews appear to be identical in the app, performing an inspection of each application's GUI
+using Appium Inspector reveals differences in the object hierarchy as depicted below (iOS version on left, Android version
+on the right):
+
+![Horizontal Scrolling Carousel Hierarchy](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/CarouselHierarchy.png "Horizontal Scrolling Carousel Hierarchy")
+
+As in the previous example for the vertical scrolling ListView, the inspection of the Carousel ListView object hierarchy
+reveals that for the iOS version of the app, list items are again made up of `XCUIElementTypeOther` objects, and that for
+the Android version of the app, list items are again made up of `android.view.ViewGroup` objects.
+
+As in the previous examples, the iOS inspection shows all 6 list items, while only 2 list items are shown in the inspection
+of the Android app, which corresponds to the list items that are visible on the Android device screen.
+
+The code snippets below demonstrate the use of the `AppList.define_list_elements` method in the `SwipeScreen` screen object's
+`initialize` method to define the scroll axis and list item components that make up the Carousel horizontal scrolling ListView
+from the above examples.
+
+iOS Swipe `ScreenObject`
+```ruby
+    class SwipeScreen < ScreenObject
+      trait(:screen_name)    { 'Swipe' }
+      trait(:screen_locator) { { accessibility_id: 'Swipe-screen' } }
+
+      # Swipe screen UI elements
+      list :carousel_list, { accessibility_id: 'Carousel' }
+
+      def initialize
+        super
+        # define the list item element for the Carousel list object
+        list_spec = {
+          list_item: { xpath: '//XCUIElementTypeOther[contains(@name, "__CAROUSEL_ITEM_")]' },
+          scrolling: :horizontal
+        }
+        carousel_list.define_list_elements(list_spec)
+      end
+    end
+```
+
+Android Swipe `ScreenObject`
+```ruby
+    class SwipeScreen < ScreenObject
+      trait(:screen_name)    { 'Swipe' }
+      trait(:screen_locator) { { accessibility_id: 'Swipe-screen' } }
+
+      # Swipe screen UI elements
+      list :carousel_list, { accessibility_id: 'Carousel' }
+
+      def initialize
+        super
+        # define the list item element for the Carousel list object
+        list_spec = {
+          list_item: { xpath: '//android.view.ViewGroup[contains(@resource-id, "__CAROUSEL_ITEM_")]' },
+          scrolling: :horizontal
+        }
+        carousel_list.define_list_elements(list_spec)
+      end
+    end
+```
+
+
+#### Popup and PickerWheel Style ListViews
+
+Below is an example of a PickerWheel (iOS) and Popup (Android) style ListView implementations on the Form Components screen
+of a cross-platform application. 
+
+![PickerWheel and Popup ListViews](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/Popup_Picker.png "PickerWheel and Popup ListViews")
+
+Performing an inspection of each application's GUI using Appium Inspector reveals differences in the object hierarchy as
+depicted below (iOS version on left, Android version on the right):
+
+![PickerWheel and Popup ListView Hierarchy](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/PopupHeirarchy.png "PickerWheel and Popup ListView Hierarchy")
+
+The inspection of the PickerWheel and Popup ListView object hierarchies reveals that for the iOS version of the app, list
+items are again made up of `XCUIElementTypeOther` objects, and that for the Android version of the app, list items are made
+up of `android.widget.CheckedTextView` objects.
+
+However, `XCUIElementTypePickerWheel` controls present testability challenges with Appium, as the `XCUIElementTypeOther`
+objects that comprise the individual list items cannot be reliably interacted with or validated. When inspecting each of
+the `XCUIElementTypeOther` list items of the `XCUIElementTypePickerWheel` control, there are no `text`, `accessibility_id`,
+`label`, or `value` element attributes available which could be used to determine whether the correct caption strings are
+displayed for each list item. The `AppList.get_item_count` or `get_list_items` methods do not support `XCUIElementTypePickerWheel`
+controls, and will raise an exception if called for such a control.
+
+For the Android version of the app, the `android.widget.CheckedTextView` list items can be interacted with and validated,
+as the `text` element attribute for each list item are visible in the inspection.
+
+The code snippet below demonstrate the use of the `AppList.define_list_elements` method in the `FormScreen` screen object's
+`initialize` method to define the list item components that make up the Android Popup style ListView from the above example.
+
+Android FormScreen `ScreenObject`
+```ruby
+    class FormScreen < ScreenObject
+      trait(:screen_name)    { 'Form' }
+      trait(:screen_locator) { { accessibility_id: 'Forms-screen' } }
+
+      # Form screen UI elements
+      list :drop_down_menu, { id: 'com.wdiodemoapp:id/select_dialog_listview' }
+
+      def initialize
+        super
+        # define the list item element for the drop-down list object
+        list_spec = { list_item: { class: 'android.widget.CheckedTextView' } }
+        drop_down_menu.define_list_elements(list_spec)
+      end
+    end
+```
+
+
 ---
 ## Instantiating ScreenObjects and Utilizing the ScreenManager
 
@@ -868,7 +1067,7 @@ scenarios are executed:
     include WorldScreens
     WorldPages.instantiate_screen_objects
 ```
-**NOTE:** If you intend to use the `WorldScreens`, you must define a `screen_name` trait for each of the `ScreenObjects`
+**NOTE:** If you intend to use the `ScreenManager`, you must define a `screen_name` trait for each of the `ScreenObjects`
 to be registered.
 
 
@@ -1005,7 +1204,7 @@ endpoint is used.
 You can run your automated tests on locally hosted iOS simulators or physically connected devices using Appium and XCode
 on macOS. You must install Appium, XCode, and the iOS version-specific device simulators for XCode. Information about
 Appium setup and configuration requirements with the XCUITest driver for testing on physically connected iOS devices can
-be found on [this page](https://github.com/appium/appium-xcuitest-driver/blob/master/docs/real-device-config.md). Refer to [this page](https://appium.github.io/appium-xcuitest-driver/5.12/capabilities/) for information regarding specifying Appium capabilities that are
+be found on [this page](https://github.com/appium/appium-xcuitest-driver/blob/master/docs/preparation/real-device-config.md). Refer to [this page](https://appium.github.io/appium-xcuitest-driver/5.12/capabilities/) for information regarding specifying Appium capabilities that are
 specific to the XCUITest driver.
 
 ##### Local iOS Simulators or Physical Devices using Environment Variables
