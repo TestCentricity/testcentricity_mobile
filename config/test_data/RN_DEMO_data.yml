@@ -12,6 +12,8 @@ Capabilities:
       :'appium:automationName': 'XCUITest'
       :'appium:app': '/Users/Shared/Test_Apps/iOS/MyRNDemoApp.app'
       :'appium:noReset': true
+      :'appium:maxTypingFrequency': 15
+      :'appium:respectSystemAlerts': true
   iPad:
     :device_type: :tablet
     :driver: :appium
@@ -24,6 +26,8 @@ Capabilities:
       :'appium:orientation': 'PORTRAIT'
       :'appium:app': '/Users/Shared/Test_Apps/iOS/MyRNDemoApp.app'
       :'appium:noReset': true
+      :'appium:maxTypingFrequency': 15
+      :'appium:respectSystemAlerts': true
   android_phone:
     :device_type: :phone
     :driver: :appium

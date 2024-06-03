@@ -26,7 +26,7 @@ Feature:  Screen Navigation
     Then I expect the navigation menu to be hidden
 
 
-  Scenario Outline:  Verify screen navigation menu features
+  Scenario Outline:  Verify <screen_name> screen navigation menu features
     When I tap the <screen_name> navigation menu item
     Then I expect the <screen_name> screen to be correctly displayed
 
@@ -40,7 +40,7 @@ Feature:  Screen Navigation
       |SauceBot Video |
 
 
-  Scenario Outline:  Verify screen navigation menu features with popup modals
+  Scenario Outline:  Verify <screen_name> screen navigation menu features with popup modals
     When I tap the <screen_name> navigation menu item
     And I accept the popup request modal
     Then I expect the <screen_name> screen to be correctly displayed

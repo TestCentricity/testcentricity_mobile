@@ -8,9 +8,16 @@ module TestCentricity
       def initialize(name, parent, locator, context)
         super
         @type = :list
-        @list_item = nil
-        @scrolling = :vertical
         @item_objects = nil
+        @scrolling = :vertical
+        @list_item = case Environ.device_os
+                     when :ios
+                       { class: 'XCUIElementTypeOther' }
+                     when :android
+                       { class: 'android.view.ViewGroup' }
+                     else
+                       nil
+                     end
       end
 
       def define_list_elements(element_spec)
@@ -163,9 +170,9 @@ module TestCentricity
       def get_list_item_locator
         if @list_item.nil?
           if Environ.device_os == :ios
-            define_list_elements({ :list_item => { class: 'XCUIElementTypeCell' } } )
+            define_list_elements({ :list_item => { class: 'XCUIElementTypeOther' } } )
           else
-            define_list_elements({ :list_item => { class: 'android.widget.FrameLayout' } } )
+            define_list_elements({ :list_item => { class: 'android.view.ViewGroup' } } )
           end
         end
         @list_item
