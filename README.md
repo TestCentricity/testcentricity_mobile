@@ -878,7 +878,7 @@ axis that is set when instantiating an `AppList` element.
 
 iOS Cloud List `ScreenObject`
 ```ruby
-    class CloudListScreen < ScreenObject
+    class CloudListScreen < TestCentricity::ScreenObject
       trait(:screen_name)    { 'Cloud List' }
       trait(:screen_locator) { { class_chain: '**/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther' } }
 
@@ -896,7 +896,7 @@ iOS Cloud List `ScreenObject`
 
 Android CloudListScreen `ScreenObject`
 ```ruby
-    class CloudListScreen < ScreenObject
+    class CloudListScreen < TestCentricity::ScreenObject
       trait(:screen_name)    { 'Cloud List' }
       trait(:screen_locator) { { xpath: '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.view.ViewGroup' } }
 
@@ -939,7 +939,7 @@ from the above examples.
 
 iOS Swipe `ScreenObject`
 ```ruby
-    class SwipeScreen < ScreenObject
+    class SwipeScreen < TestCentricity::ScreenObject
       trait(:screen_name)    { 'Swipe' }
       trait(:screen_locator) { { accessibility_id: 'Swipe-screen' } }
 
@@ -960,7 +960,7 @@ iOS Swipe `ScreenObject`
 
 Android Swipe `ScreenObject`
 ```ruby
-    class SwipeScreen < ScreenObject
+    class SwipeScreen < TestCentricity::ScreenObject
       trait(:screen_name)    { 'Swipe' }
       trait(:screen_locator) { { accessibility_id: 'Swipe-screen' } }
 
@@ -1011,7 +1011,7 @@ The code snippet below demonstrate the use of the `AppList.define_list_elements`
 
 Android FormScreen `ScreenObject`
 ```ruby
-    class FormScreen < ScreenObject
+    class FormScreen < TestCentricity::ScreenObject
       trait(:screen_name)    { 'Form' }
       trait(:screen_locator) { { accessibility_id: 'Forms-screen' } }
 
