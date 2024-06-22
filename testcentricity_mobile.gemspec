@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['testcentricity@gmail.com']
   spec.summary       = 'A Screen Object Model Framework for native mobile iOS and/or Android app testing'
   spec.description   = '
-    The TestCentricity™ Mobile core framework for native mobile iOS and Android app testing implements a Screen Object
+    The TestCentricity™ For Mobile core framework for native mobile iOS and Android app testing implements a Screen Object
     Model DSL for use with Cucumber or RSpec and Appium. The gem also facilitates the configuration of the appropriate
     Appium capabilities required to establish a connection with locally or cloud hosted (using BrowserStack, Sauce Labs,
     or TestingBot services) iOS or Android devices or simulators.'
