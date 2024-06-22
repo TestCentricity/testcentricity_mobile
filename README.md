@@ -1,4 +1,4 @@
-# TestCentricity™ Mobile
+# TestCentricity™ For Mobile
 
 [![Gem Version](https://badge.fury.io/rb/testcentricity_mobile.svg)](https://badge.fury.io/rb/testcentricity_mobile)
 [![License (3-Clause BSD)](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?style=flat-square)](http://opensource.org/licenses/BSD-3-Clause)
@@ -7,12 +7,12 @@
 [![Docs](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/gems/testcentricity_mobile)
 
 
-The TestCentricity™ Mobile core framework for native mobile iOS and Android app testing implements a Screen Object Model
+The TestCentricity™ For Mobile core framework for native mobile iOS and Android app testing implements a Screen Object Model
 DSL for use with Cucumber (version 7.x or greater) and Appium 2.x. It also facilitates the configuration of the appropriate
 Appium capabilities and driver required to establish a connection with locally or cloud hosted iOS and Android real devices
 or simulators.
 
-The TestCentricity™ Mobile gem supports automated testing of native iOS and Android apps running on the following mobile
+The TestCentricity™ For Mobile gem supports automated testing of native iOS and Android apps running on the following mobile
 test targets:
 * locally hosted iOS device simulators or physical iOS devices (using Appium and XCode on macOS)
 * locally hosted Android devices or Android Studio virtual device emulators (using Appium and Android Studio)
@@ -28,8 +28,8 @@ A complete history of bug fixes and new features can be found in the {file:CHANG
 
 The RubyDocs for this gem can be found [here](https://www.rubydoc.info/gems/testcentricity_mobile/).
 
-Two example projects that demonstrates the implementation of a screen object model framework using Cucumber and TestCentricity™
-Mobile can be found at the following:
+Two example projects that demonstrates the implementation of a screen object model framework using TestCentricity™ For Mobile 
+and Cucumber can be found at the following:
   * [tc_mobile_react_native_demo](https://github.com/TestCentricity/tc_mobile_react_native_demo)
   * [tc_mobile_wdio_demo](https://github.com/TestCentricity/tc_mobile_wdio_demo)
 
@@ -39,23 +39,21 @@ ability to interact with and verify iOS system level modal dialogs.
 
 ### Which gem should I use?
 
-* The [TestCentricity **Mobile** gem](https://rubygems.org/gems/testcentricity_mobile) only supports testing of native iOS and Android mobile apps
-* The [TestCentricity **Apps** gem](https://rubygems.org/gems/testcentricity_apps) only supports testing of MacOS desktop apps and native iOS and Android mobile apps
-* The [TestCentricity **Web** gem](https://rubygems.org/gems/testcentricity_web) only supports testing of web interfaces via desktop and mobile web browsers
-* The TestCentricity gem supports testing of native mobile apps and/or web interfaces via desktop and mobile web browsers.
+* The [TestCentricity For **Mobile** gem](https://rubygems.org/gems/testcentricity_mobile) supports testing of native iOS and Android mobile apps
+* The [TestCentricity For **Apps** gem](https://rubygems.org/gems/testcentricity_apps) supports testing of MacOS desktop apps and native iOS and Android mobile apps
+* The [TestCentricity For **Web** gem](https://rubygems.org/gems/testcentricity_web) supports testing of web interfaces via desktop and mobile web browsers
 
-| Tested platforms                                   | TestCentricity Mobile | TestCentricity Apps | TestCentricity Web | TestCentricity |
-|----------------------------------------------------|-----------------------|---------------------|--------------------|----------------|
-| Native mobile iOS and/or Android apps only         | Yes                   | Yes                 | No                 | No             |
-| MacOS desktop apps                                 | No                    | Yes                 | No                 | No             |
-| Desktop/mobile web browsers only                   | No                    | No                  | Yes                | No             |
-| Native mobile apps and desktop/mobile web browsers | No                    | No                  | No                 | Yes            |
+| Tested platforms                           | TestCentricity For Mobile | TestCentricity For Apps | TestCentricity For Web |
+|--------------------------------------------|:-:|:-:|:-:|
+| Native mobile iOS and/or Android apps only | Yes                       | Yes                     | No                     |
+| MacOS desktop apps                         | No                        | Yes                     | No                     |
+| Desktop/mobile web browsers only           | No                        | No                      | Yes                    |
 
 
 ## Installation
 
-TestCentricity Mobile version 3.0 and above requires Ruby 3.0.0 or later. To install the TestCentricity Mobile gem, add
-this line to your automation project's Gemfile:
+TestCentricity For Mobile version 3.0 and above requires Ruby 3.0.0 or later. To install the TestCentricity For Mobile gem,
+add this line to your automation project's Gemfile:
 
     gem 'testcentricity_mobile'
 
@@ -1717,7 +1715,7 @@ Refer to the following pages for information on uploading your iOS `.ipa` or `.a
 Sauce Labs servers:
 - [Mobile App Storage](https://docs.saucelabs.com/mobile-apps/app-storage/)
 
-The TestCentricity Mobile gem does not currently support automatic upload of app files to Sauce Labs servers. Uploading 
+The TestCentricity For Mobile gem does not currently support automatic upload of app files to Sauce Labs servers. Uploading 
 will have to be performed manually or via your CI workflow. If you have not specified a custom test ID for your apps, your
 tests will most likely fail as a new `app_url` will be generated, and you will have to update your test configuration data
 to use the new `app_url`. If you have specified a custom test ID for your apps, your tests should be able to run without
@@ -2013,7 +2011,7 @@ the `/features/support/<platform>/sections` folder, where `<platform>` is typica
 ---
 ## Mobile Test Automation Framework Implementation
 
-![TestCentricity Mobile Framework Overview](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/TC_Mobile.jpg "TestCentricity Mobile Framework Overview")
+![TestCentricity For Mobile Framework Overview](https://raw.githubusercontent.com/TestCentricity/testcentricity_mobile/main/.github/images/TC_Mobile.jpg "TestCentricity For Mobile Framework Overview")
 
 
 ---
