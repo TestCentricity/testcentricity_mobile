@@ -24,7 +24,7 @@ test targets:
 
 ## What's New
 
-A complete history of bug fixes and new features can be found in the {file:CHANGELOG.md CHANGELOG} file.
+A complete history of bug fixes and new features can be found in the [CHANGELOG](https://github.com/TestCentricity/testcentricity_mobile/blob/master/CHANGELOG.md) file.
 
 The RubyDocs for this gem can be found [here](https://www.rubydoc.info/gems/testcentricity_mobile/).
 
@@ -53,7 +53,7 @@ ability to interact with and verify iOS system level modal dialogs.
 ## Installation
 
 TestCentricity For Mobile version 3.0 and above requires Ruby 3.0.0 or later. To install the TestCentricity For Mobile gem,
-add this line to your automation project's Gemfile:
+add this line to your automation project's `Gemfile`:
 
     gem 'testcentricity_mobile'
 
