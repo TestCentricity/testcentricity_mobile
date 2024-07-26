@@ -516,7 +516,7 @@ module TestCentricity
                   bs_options[:gpsLocation] = ENV['GPS_LOCATION'] if ENV['GPS_LOCATION']
                   bs_options[:acceptInsecureCerts] = ENV['ACCEPT_INSECURE_CERTS'] if ENV['ACCEPT_INSECURE_CERTS']
                   bs_options[:disableAnimations] = ENV['DISABLE_ANIMATION'] if ENV['DISABLE_ANIMATION']
-                  bs_options[:appiumVersion] = ENV['APPIUM_VERSION'] ? ENV['APPIUM_VERSION'] : '2.4.1'
+                  bs_options[:appiumVersion] = ENV['APPIUM_VERSION'] ? ENV['APPIUM_VERSION'] : '2.6.0'
 
                   capabilities = {
                     platformName: ENV['BS_OS'],
@@ -560,7 +560,7 @@ module TestCentricity
                   tb_options['testingbot.geoCountryCode'] = ENV['IP_GEOLOCATION'] if ENV['IP_GEOLOCATION']
                   tb_options[:screenrecorder] = ENV['RECORD_VIDEO'] if ENV['RECORD_VIDEO']
                   tb_options[:screenshot] = ENV['SCREENSHOTS'] if ENV['SCREENSHOTS']
-                  tb_options[:appiumVersion] = ENV['APPIUM_VERSION'] ? ENV['APPIUM_VERSION'] : '2.4.1'
+                  tb_options[:appiumVersion] = ENV['APPIUM_VERSION'] ? ENV['APPIUM_VERSION'] : '2.10.3'
 
                   capabilities = {
                     platformName: ENV['TB_OS'],
