@@ -122,7 +122,7 @@ desc 'Run all specs'
 task all_specs: [:required_specs,
                  :browserstack_specs,
                  :custom_driver_specs,
-                 :r]
+                 :testingbot_specs]
 
 
 desc 'Run Cucumber smoke test features'
