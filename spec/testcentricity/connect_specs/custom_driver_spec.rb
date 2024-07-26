@@ -68,7 +68,7 @@ RSpec.describe TestCentricity::AppiumConnect, custom: true do
             projectName: 'TestCentricity Mobile - BrowserStack',
             buildName: "Version #{TestCentricityMobile::VERSION}",
             sessionName: 'RSpec - Custom Driver Specs',
-            appiumVersion: '2.4.1'
+            appiumVersion: '2.6.0'
           }
         }
       }
