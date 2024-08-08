@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', ['~> 0.18']
   spec.add_development_dependency 'yard', ['>= 0.9.0']
 
-  spec.add_runtime_dependency 'appium_lib', '~> 15.2.0'
+  spec.add_runtime_dependency 'appium_lib', '~> 15.2.2'
   spec.add_runtime_dependency 'childprocess'
   spec.add_runtime_dependency 'chronic', '0.10.2'
   spec.add_runtime_dependency 'faker'
