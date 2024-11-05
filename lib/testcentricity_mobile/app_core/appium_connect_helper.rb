@@ -545,7 +545,7 @@ module TestCentricity
     def self.testingbot_capabilities
       Environ.device = :simulator
       # specify endpoint url
-      @endpoint = "http://#{ENV['TB_USERNAME']}:#{ENV['TB_AUTHKEY']}@hub.testingbot.com/wd/hub" if @endpoint.nil?
+      @endpoint = "https://#{ENV['TB_USERNAME']}:#{ENV['TB_AUTHKEY']}@hub.testingbot.com/wd/hub" if @endpoint.nil?
       # define TestingBot options
       options = if @capabilities.nil?
                   Environ.device_name = ENV['TB_DEVICE']
