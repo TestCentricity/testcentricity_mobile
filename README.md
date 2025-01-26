@@ -52,7 +52,7 @@ ability to interact with and verify iOS system level modal dialogs.
 
 ## Installation
 
-TestCentricity For Mobile version 3.0 and above requires Ruby 3.0.0 or later. To install the TestCentricity For Mobile gem,
+TestCentricity For Mobile version 4.1 and above requires Ruby 3.1.0 or later. To install the TestCentricity For Mobile gem,
 add this line to your automation project's `Gemfile`:
 
     gem 'testcentricity_mobile'
@@ -2017,7 +2017,7 @@ the `/features/support/<platform>/sections` folder, where `<platform>` is typica
 ---
 ## Copyright and License
 
-TestCentricity™ Framework is Copyright (c) 2014-2024, Tony Mrozinski.
+TestCentricity™ Framework is Copyright (c) 2014-2025, Tony Mrozinski.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

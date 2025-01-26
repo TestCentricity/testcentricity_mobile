@@ -165,7 +165,7 @@ desc 'Build and release new version of gem'
 task :release do
   ENV['COVERAGE'] = 'false'
   version = TestCentricityMobile::VERSION
-  puts "Releasing version #{version} of TestCentricity Mobile gem, y/n?"
+  puts "Releasing version #{version} of TestCentricity For Mobile gem, y/n?"
   exit(1) unless $stdin.gets.chomp == 'y'
   sh 'gem build testcentricity_mobile.gemspec && ' \
      "gem push testcentricity_mobile-#{version}.gem"
