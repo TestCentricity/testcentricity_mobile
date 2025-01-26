@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name = 'testcentricity_mobile'
   spec.version = TestCentricityMobile::VERSION
   spec.platform = Gem::Platform::RUBY
-  spec.required_ruby_version = '>= 3.0.0'
+  spec.required_ruby_version = '>= 3.1.0'
   spec.authors = ['A.J. Mrozinski']
   spec.email = ['support@testcentricity.com']
   spec.summary = 'A Screen Object Model Framework for native mobile iOS and/or Android app testing'
@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.requirements << 'Appium'
 
   spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'cucumber', '9.2.0'
+  spec.add_development_dependency 'cucumber', '9.2.1'
   spec.add_development_dependency 'parallel_tests'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'require_all', '=1.5.0'
@@ -39,13 +39,13 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', ['~> 0.18']
   spec.add_development_dependency 'yard', ['>= 0.9.0']
 
-  spec.add_runtime_dependency 'appium_lib', '~> 15.2.2'
+  spec.add_runtime_dependency 'appium_lib', '~> 15.3.0'
   spec.add_runtime_dependency 'childprocess'
   spec.add_runtime_dependency 'chronic', '0.10.2'
   spec.add_runtime_dependency 'faker'
   spec.add_runtime_dependency 'i18n'
   spec.add_runtime_dependency 'json'
-  spec.add_runtime_dependency 'selenium-webdriver', '4.26.0'
+  spec.add_runtime_dependency 'selenium-webdriver', '4.28.0'
   spec.add_runtime_dependency 'test-unit'
   spec.add_runtime_dependency 'virtus'
 end

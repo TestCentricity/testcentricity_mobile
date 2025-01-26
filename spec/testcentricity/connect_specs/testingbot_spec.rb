@@ -46,8 +46,8 @@ describe TestCentricity::AppiumConnect, testingbot: true do
         verify_mobile_connect(
           dev_type = :phone,
           dev_os = :ios,
-          os_version = '17.0',
-          dev_name = 'iPhone 14',
+          os_version = '16.0',
+          dev_name = 'iPhone 13',
           platform = :device
         )
       end
@@ -101,8 +101,8 @@ describe TestCentricity::AppiumConnect, testingbot: true do
       verify_mobile_connect(
         dev_type = :phone,
         dev_os = :ios,
-        os_version = '17.0',
-        dev_name = 'iPhone 14',
+        os_version = '16.0',
+        dev_name = 'iPhone 13',
         platform = :device
       )
     end
