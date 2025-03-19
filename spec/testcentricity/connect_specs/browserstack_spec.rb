@@ -37,7 +37,7 @@ describe TestCentricity::AppiumConnect, browserstack: true do
               projectName: ENV['AUTOMATE_PROJECT'],
               buildName: ENV['AUTOMATE_BUILD'],
               sessionName: 'RSpec - DesiredCaps Hash',
-              appiumVersion: '2.6.0'
+              appiumVersion: '2.12.1'
             },
             language: 'En',
             locale: 'en_AU'
@@ -75,7 +75,7 @@ describe TestCentricity::AppiumConnect, browserstack: true do
               projectName: ENV['AUTOMATE_PROJECT'],
               buildName: ENV['AUTOMATE_BUILD'],
               sessionName: 'RSpec - DesiredCaps Hash',
-              appiumVersion: '2.6.0'
+              appiumVersion: '2.12.1'
             },
             language: 'En',
             locale: 'en_AU'
@@ -155,6 +155,6 @@ describe TestCentricity::AppiumConnect, browserstack: true do
   end
 
   after(:each) do
-      AppiumConnect.quit_driver
-    end
+    AppiumConnect.quit_driver
+  end
 end
