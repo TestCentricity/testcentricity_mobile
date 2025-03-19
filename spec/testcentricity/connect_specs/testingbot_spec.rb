@@ -34,7 +34,7 @@ describe TestCentricity::AppiumConnect, testingbot: true do
             'tb:options': {
               name: ENV['AUTOMATE_PROJECT'],
               build: 'RSpec - DesiredCaps Hash',
-              appiumVersion: '2.10.3'
+              appiumVersion: 'latest'
             }
           }
         }
@@ -68,7 +68,7 @@ describe TestCentricity::AppiumConnect, testingbot: true do
             'tb:options': {
               name: ENV['AUTOMATE_PROJECT'],
               build: 'RSpec - DesiredCaps Hash',
-              appiumVersion: '2.10.3'
+              appiumVersion: 'latest'
             }
           }
         }

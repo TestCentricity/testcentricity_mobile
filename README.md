@@ -108,19 +108,19 @@ folder of your test automation project, where `<platform>` is typically `ios` or
 you will typically have to define two `ScreenObjects` - one for the iOS version of your app and the other for the Android
 version of your app.
 
-    my_automation_project
-        ├── config
-        ├── features
-        │   ├── step_definitions
-        │   ├── support
-        │   │   ├── android
-        |   |   |   └── screens
-        │   │   ├── ios
-        |   |   |   └── screens
-        │   │   ├── env.rb
-        │   │   └── hooks.rb
-        ├── Gemfile
-        └── README.md
+        📁 my_automation_project
+        ├── 📁 config
+        ├── 📁 features
+        │   ├── 📁 step_definitions
+        │   ├── 📁 support
+        │   │   ├── 📁 android
+        |   |   |   └── 📁 screens
+        │   │   ├── 📁 ios
+        |   |   |   └── 📁 screens
+        │   │   ├── 📄 env.rb
+        │   │   └── 📄 hooks.rb
+        ├── 📄 Gemfile
+        └── 📄 README.md
 
 
 You define a new `ScreenObject` as shown below:
@@ -331,21 +331,21 @@ Your `ScreenSection` class definitions should be contained within individual `.r
 folder of your test automation project, where `<platform>` is typically `ios` or `android`. For each screen section in your
 app, you will typically have to define two `ScreenSections` - one for your iOS app and the other for your Android app.
 
-    my_automation_project
-        ├── config
-        ├── features
-        │   ├── step_definitions
-        │   ├── support
-        │   │   ├── android
-        |   |   |   ├── screens
-        |   |   |   └── sections
-        │   │   ├── ios
-        |   |   |   ├── screens
-        |   |   |   └── sections
-        │   │   ├── env.rb
-        │   │   └── hooks.rb
-        ├── Gemfile
-        └── README.md
+        📁 my_automation_project
+        ├── 📁 config
+        ├── 📁 features
+        │   ├── 📁 step_definitions
+        │   ├── 📁 support
+        │   │   ├── 📁 android
+        |   |   |   ├── 📁 screens
+        |   |   |   └── 📁 sections
+        │   │   ├── 📁 ios
+        |   |   |   ├── 📁 screens
+        |   |   |   └── 📁 sections
+        │   │   ├── 📄 env.rb
+        │   │   └── 📄 hooks.rb
+        ├── 📄 Gemfile
+        └── 📄 README.md
 
 
 You define a new `ScreenSection` as shown below:
@@ -812,9 +812,10 @@ For example:
 | Language (Country)    | File name |
 |-----------------------|-----------|
 | English               | en.yml    |
+| English (Australia)   | en-AU.yml |
 | English (Canada)      | en-CA.yml |
-| French (Canada)       | fr-CA.yml |
 | French                | fr.yml    |
+| French (Canada)       | fr-CA.yml |
 | Spanish               | es.yml    |
 | German                | de.yml    |
 | Portuguese (Brazil)   | pt-BR.yml |
@@ -822,19 +823,23 @@ For example:
 
 Baseline translation strings are stored in `.yml` files in the `config/locales/` folder.
 
-    my_automation_project
-        ├── config
-        │   ├── locales
-        │   │   ├── en.yml
-        │   │   ├── es.yml
-        │   │   ├── fr.yml
-        │   │   ├── fr-CA.yml
-        │   │   └── en-AU.yml
-        │   ├── test_data
-        │   └── cucumber.yml
-        ├── features
-        ├── Gemfile
-        └── README.md
+       📁 my_automation_project/
+        ├── 📁 config/
+        │   ├── 📁 locales/
+        │   │   ├── 📄 en.yml
+        │   │   ├── 📄 en-AU.yml
+        │   │   ├── 📄 es.yml
+        │   │   ├── 📄 de.yml
+        │   │   ├── 📄 fr.yml
+        │   │   ├── 📄 fr-CA.yml
+        │   │   ├── 📄 pt-BR.yml
+        │   │   └── 📄 pt-PT.yml
+        │   ├── 📁 test_data/
+        │   └── 📄 cucumber.yml
+        ├── 📁 downloads/
+        ├── 📁 features/
+        ├── 📄 Gemfile
+        └── 📄 README.md
 
 
 ### Working With Custom AppUIElements
@@ -1984,28 +1989,29 @@ Object Model architecture. `ScreenObject` class definitions should be stored in 
 folders, organized in functional area sub-folders as needed. Likewise, `ScreenSection` class definitions should be stored in
 the `/features/support/<platform>/sections` folder, where `<platform>` is typically `ios` or `android`.
 
-    my_automation_project
-        ├── config
-        │   ├── locales
-        │   ├── test_data
-        │   └── cucumber.yml
-        ├── features
-        │   ├── step_definitions
-        │   ├── support
-        │   │   ├── android
-        |   |   |   ├── screens
-        |   |   |   └── sections
-        │   │   ├── ios
-        |   |   |   ├── screens
-        |   |   |   └── sections
-        │   │   ├── shared_components
-        |   |   |   ├── screens
-        |   |   |   └── sections
-        │   │   ├── env.rb
-        │   │   ├── hooks.rb
-        │   │   └── world_screens.rb
-        ├── Gemfile
-        └── README.md
+        📁 my_automation_project/
+        ├── 📁 config/
+        │   ├── 📁 locales/
+        │   ├── 📁 test_data/
+        │   └── 📄 cucumber.yml
+        ├── 📁 downloads/
+        ├── 📁 features/
+        │   ├── 📁 step_definitions/
+        │   ├── 📁 support
+        │   │   ├── 📁 android
+        |   |   |   ├── 📁 screens
+        |   |   |   └── 📁 sections
+        │   │   ├── 📁 ios
+        |   |   |   ├── 📁 screens
+        |   |   |   └── 📁 sections
+        │   │   ├── 📁 shared_components
+        |   |   |   ├── 📁 screens
+        |   |   |   └── 📁 sections
+        │   │   ├── 📄 env.rb
+        │   │   ├── 📄 hooks.rb
+        │   │   └── 📄 world_screens.rb
+        ├── 📄 Gemfile
+        └── 📄 README.md
 
 
 ---
