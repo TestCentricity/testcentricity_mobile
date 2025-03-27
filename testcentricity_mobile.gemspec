@@ -39,13 +39,13 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', ['~> 0.18']
   spec.add_development_dependency 'yard', ['>= 0.9.0']
 
-  spec.add_runtime_dependency 'appium_lib', '~> 16.0.1'
+  spec.add_runtime_dependency 'appium_lib', '~> 16.1.0'
   spec.add_runtime_dependency 'childprocess'
   spec.add_runtime_dependency 'chronic', '0.10.2'
   spec.add_runtime_dependency 'faker'
   spec.add_runtime_dependency 'i18n'
   spec.add_runtime_dependency 'json'
-  spec.add_runtime_dependency 'selenium-webdriver', '4.29.1'
+  spec.add_runtime_dependency 'selenium-webdriver', '4.30.1'
   spec.add_runtime_dependency 'test-unit'
   spec.add_runtime_dependency 'virtus'
 end

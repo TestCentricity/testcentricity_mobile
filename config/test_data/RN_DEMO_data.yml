@@ -92,7 +92,7 @@ Capabilities:
       :'appium:deviceName': 'Google Pixel 7 Pro'
       :'appium:automationName': 'UiAutomator2'
       :'appium:app': 'RNDemoAppAndroid'
-      :'appiumVersion: '2.4.1'
+      :'appiumVersion': '2.12.1'
       :'projectName: 'TestCentricity Mobile - BrowserStack'
       :'sessionName: 'Android Real Device Deeplink Tests'
       :'appium:noReset': true
