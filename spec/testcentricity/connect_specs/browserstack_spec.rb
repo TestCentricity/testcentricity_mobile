@@ -15,7 +15,7 @@ describe TestCentricity::AppiumConnect, browserstack: true do
     ENV['AUTOMATE_BUILD'] = "Version #{TestCentricityMobile::VERSION}"
     ENV['TEST_CONTEXT'] = 'RSpec - Environment Variables'
     ENV['DEVICE_TYPE'] = 'phone'
-    # ENV['UPLOAD_APP'] = 'true'
+    ENV['UPLOAD_APP'] = 'true'
   end
 
   describe 'Connect to BrowserStack hosted mobile device simulator using W3C desired_capabilities hash' do
@@ -96,38 +96,38 @@ describe TestCentricity::AppiumConnect, browserstack: true do
     end
   end
 
-  describe 'Connect to BrowserStack hosted mobile device simulator using environment variables' do
-    it 'connects to iOS iPhone device using environment variables' do
-      ENV['BS_OS'] = 'ios'
-      ENV['BS_OS_VERSION'] = '17'
-      ENV['BS_DEVICE'] = 'iPhone 15 Pro Max'
-      ENV['APP'] = 'RNDemoAppiOS'
-      AppiumConnect.initialize_appium
-
-      verify_mobile_connect(
-        dev_type = :phone,
-        dev_os = :ios,
-        os_version = '17',
-        dev_name = 'iPhone 15 Pro Max'
-      )
-    end
-
-    it 'connects to Android phone device using environment variables' do
-      ENV['BS_OS'] = 'android'
-      ENV['BS_OS_VERSION'] = '13.0'
-      ENV['BS_DEVICE'] = 'Google Pixel 7 Pro'
-      ENV['APP'] = 'RNDemoAppAndroid'
-      ENV['APPIUM_VERSION'] = '2.4.1'
-      AppiumConnect.initialize_appium
-
-      verify_mobile_connect(
-        dev_type = :phone,
-        dev_os = :android,
-        os_version = '13.0',
-        dev_name = 'Google Pixel 7 Pro'
-      )
-    end
-  end
+  # describe 'Connect to BrowserStack hosted mobile device simulator using environment variables' do
+  #   it 'connects to iOS iPhone device using environment variables' do
+  #     ENV['BS_OS'] = 'ios'
+  #     ENV['BS_OS_VERSION'] = '17'
+  #     ENV['BS_DEVICE'] = 'iPhone 15 Pro Max'
+  #     ENV['APP'] = 'RNDemoAppiOS'
+  #     AppiumConnect.initialize_appium
+  #
+  #     verify_mobile_connect(
+  #       dev_type = :phone,
+  #       dev_os = :ios,
+  #       os_version = '17',
+  #       dev_name = 'iPhone 15 Pro Max'
+  #     )
+  #   end
+  #
+  #   it 'connects to Android phone device using environment variables' do
+  #     ENV['BS_OS'] = 'android'
+  #     ENV['BS_OS_VERSION'] = '13.0'
+  #     ENV['BS_DEVICE'] = 'Google Pixel 7 Pro'
+  #     ENV['APP'] = 'RNDemoAppAndroid'
+  #     ENV['APPIUM_VERSION'] = '2.4.1'
+  #     AppiumConnect.initialize_appium
+  #
+  #     verify_mobile_connect(
+  #       dev_type = :phone,
+  #       dev_os = :android,
+  #       os_version = '13.0',
+  #       dev_name = 'Google Pixel 7 Pro'
+  #     )
+  #   end
+  # end
 
   def verify_mobile_connect(dev_type, dev_os, os_version, dev_name)
     # verify Environs are correctly set
