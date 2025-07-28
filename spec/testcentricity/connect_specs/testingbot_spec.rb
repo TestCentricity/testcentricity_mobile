@@ -26,9 +26,9 @@ describe TestCentricity::AppiumConnect, testingbot: true do
           endpoint: "https://#{ENV['TB_USERNAME']}:#{ENV['TB_AUTHKEY']}@hub.testingbot.com/wd/hub",
           capabilities: {
             platformName: 'ios',
-            'appium:platformVersion': '16.0',
+            'appium:platformVersion': '15.4',
             'appium:deviceName': 'iPhone 13',
-            'appium:realDevice': true,
+            # 'appium:realDevice': true,
             'appium:automationName': 'XCUITest',
             'appium:app': 'tb://rndemoappios',
             'tb:options': {
@@ -46,9 +46,9 @@ describe TestCentricity::AppiumConnect, testingbot: true do
         verify_mobile_connect(
           dev_type = :phone,
           dev_os = :ios,
-          os_version = '16.0',
+          os_version = '15.4',
           dev_name = 'iPhone 13',
-          platform = :device
+          platform = :simulator
         )
       end
     end
@@ -63,6 +63,7 @@ describe TestCentricity::AppiumConnect, testingbot: true do
             platformName: 'android',
             'appium:platformVersion': '12.0',
             'appium:deviceName': 'Pixel 6',
+            # 'appium:realDevice': true,
             'appium:automationName': 'UiAutomator2',
             'appium:app': 'tb://rndemoappandroid',
             'tb:options': {
@@ -91,9 +92,9 @@ describe TestCentricity::AppiumConnect, testingbot: true do
   describe 'Connect to TestingBot hosted mobile device simulator using environment variables' do
     it 'connects to iOS iPhone device using environment variables' do
       ENV['TB_OS'] = 'iOS'
-      ENV['TB_OS_VERSION'] = '16.0'
+      ENV['TB_OS_VERSION'] = '15.4'
       ENV['TB_DEVICE'] = 'iPhone 13'
-      ENV['REAL_DEVICE'] = 'true'
+      # ENV['REAL_DEVICE'] = 'true'
       ENV['AUTOMATION_ENGINE'] = 'XCUITest'
       ENV['APP'] = 'tb://RNDemoAppiOS'
       AppiumConnect.initialize_appium
@@ -101,9 +102,9 @@ describe TestCentricity::AppiumConnect, testingbot: true do
       verify_mobile_connect(
         dev_type = :phone,
         dev_os = :ios,
-        os_version = '16.0',
+        os_version = '15.4',
         dev_name = 'iPhone 13',
-        platform = :device
+        platform = :simulator
       )
     end
 
@@ -111,7 +112,7 @@ describe TestCentricity::AppiumConnect, testingbot: true do
       ENV['TB_OS'] = 'android'
       ENV['TB_OS_VERSION'] = '12.0'
       ENV['TB_DEVICE'] = 'Pixel 6'
-      ENV['REAL_DEVICE'] = 'false'
+      # ENV['REAL_DEVICE'] = 'true'
       ENV['AUTOMATION_ENGINE'] = 'UiAutomator2'
       ENV['APP'] = 'tb://RNDemoAppAndroid'
       AppiumConnect.initialize_appium
