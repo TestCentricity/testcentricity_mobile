@@ -72,6 +72,7 @@ Or install it yourself as:
 
 If you are using Cucumber, you need to require the following in your `env.rb` file:
 ```ruby
+    require 'selenium-webdriver'
     require 'testcentricity_mobile'
 ```
 
@@ -79,6 +80,7 @@ If you are using Cucumber, you need to require the following in your `env.rb` fi
 
 If you are using RSpec instead, you need to require the following in your `spec_helper.rb` file:
 ```ruby
+    require 'selenium-webdriver'
     require 'testcentricity_mobile'
 ```
 
