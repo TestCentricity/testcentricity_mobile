@@ -26,9 +26,9 @@ describe TestCentricity::AppiumConnect, testingbot: true do
           endpoint: "https://#{ENV['TB_USERNAME']}:#{ENV['TB_AUTHKEY']}@hub.testingbot.com/wd/hub",
           capabilities: {
             platformName: 'ios',
-            'appium:platformVersion': '15.4',
-            'appium:deviceName': 'iPhone 13',
-            # 'appium:realDevice': true,
+            'appium:platformVersion': '14.8',
+            'appium:deviceName': 'iPhone 11',
+            'appium:realDevice': true,
             'appium:automationName': 'XCUITest',
             'appium:app': 'tb://rndemoappios',
             'tb:options': {
@@ -46,9 +46,9 @@ describe TestCentricity::AppiumConnect, testingbot: true do
         verify_mobile_connect(
           dev_type = :phone,
           dev_os = :ios,
-          os_version = '15.4',
-          dev_name = 'iPhone 13',
-          platform = :simulator
+          os_version = '14.8',
+          dev_name = 'iPhone 11',
+          platform = :device
         )
       end
     end
@@ -92,9 +92,9 @@ describe TestCentricity::AppiumConnect, testingbot: true do
   describe 'Connect to TestingBot hosted mobile device simulator using environment variables' do
     it 'connects to iOS iPhone device using environment variables' do
       ENV['TB_OS'] = 'iOS'
-      ENV['TB_OS_VERSION'] = '15.4'
-      ENV['TB_DEVICE'] = 'iPhone 13'
-      # ENV['REAL_DEVICE'] = 'true'
+      ENV['TB_OS_VERSION'] = '14.8'
+      ENV['TB_DEVICE'] = 'iPhone 11'
+      ENV['REAL_DEVICE'] = 'true'
       ENV['AUTOMATION_ENGINE'] = 'XCUITest'
       ENV['APP'] = 'tb://RNDemoAppiOS'
       AppiumConnect.initialize_appium
@@ -102,9 +102,9 @@ describe TestCentricity::AppiumConnect, testingbot: true do
       verify_mobile_connect(
         dev_type = :phone,
         dev_os = :ios,
-        os_version = '15.4',
-        dev_name = 'iPhone 13',
-        platform = :simulator
+        os_version = '14.8',
+        dev_name = 'iPhone 11',
+        platform = :device
       )
     end
 
