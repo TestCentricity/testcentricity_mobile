@@ -516,7 +516,7 @@ module TestCentricity
                   bs_options[:gpsLocation] = ENV['GPS_LOCATION'] if ENV['GPS_LOCATION']
                   bs_options[:acceptInsecureCerts] = ENV['ACCEPT_INSECURE_CERTS'] if ENV['ACCEPT_INSECURE_CERTS']
                   bs_options[:disableAnimations] = ENV['DISABLE_ANIMATION'] if ENV['DISABLE_ANIMATION']
-                  bs_options[:appiumVersion] = ENV['APPIUM_VERSION'] ? ENV['APPIUM_VERSION'] : '2.12.1'
+                  bs_options[:appiumVersion] = ENV['APPIUM_VERSION'] ? ENV['APPIUM_VERSION'] : '2.19.0'
 
                   capabilities = {
                     platformName: ENV['BS_OS'],
