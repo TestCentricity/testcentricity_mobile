@@ -37,7 +37,7 @@ describe TestCentricity::AppiumConnect, browserstack: true do
               projectName: ENV['AUTOMATE_PROJECT'],
               buildName: ENV['AUTOMATE_BUILD'],
               sessionName: 'RSpec - DesiredCaps Hash',
-              appiumVersion: '2.12.1'
+              appiumVersion: '2.19.0'
             },
             language: 'En',
             locale: 'en_AU'
@@ -75,7 +75,7 @@ describe TestCentricity::AppiumConnect, browserstack: true do
               projectName: ENV['AUTOMATE_PROJECT'],
               buildName: ENV['AUTOMATE_BUILD'],
               sessionName: 'RSpec - DesiredCaps Hash',
-              appiumVersion: '2.12.1'
+              appiumVersion: '2.19.0'
             },
             language: 'En',
             locale: 'en_AU'
@@ -117,7 +117,7 @@ describe TestCentricity::AppiumConnect, browserstack: true do
       ENV['BS_OS_VERSION'] = '13.0'
       ENV['BS_DEVICE'] = 'Google Pixel 7 Pro'
       ENV['APP'] = 'RNDemoAppAndroid'
-      ENV['APPIUM_VERSION'] = '2.4.1'
+      ENV['APPIUM_VERSION'] = '2.19.0'
       AppiumConnect.initialize_appium
 
       verify_mobile_connect(
