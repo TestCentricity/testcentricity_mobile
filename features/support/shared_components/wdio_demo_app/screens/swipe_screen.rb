@@ -9,7 +9,7 @@ module SharedSwipeScreen
     ui = {
       header_label => {
         visible: true,
-        caption: 'Swipe horizontal'
+        caption: { translate: 'wdio.swipe_screen.header' }
       },
       logo_image => { visible: false },
       carousel_list => {

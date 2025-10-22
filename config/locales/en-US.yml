@@ -54,3 +54,22 @@ en-US:
     - October
     - November
     - December
+
+  # -------------------------------------------------------------
+  # Caption strings for WDIO Demo UI tests
+  # -------------------------------------------------------------
+  wdio:
+    form_screen:
+      header: 'Form components'
+      type_input: 'Type something'
+      switch: 'Click to turn the switch ON'
+      drop_down: 'Select an item...'
+      active: 'Active'
+      inactive: 'Inactive'
+      drop_selection: 'Appium is awesome'
+    swipe_screen:
+      header: 'Swipe horizontal'
+    drag_drop_screen:
+      header: 'Drag and Drop'
+      retry: 'Retry'
+      solved: 'You made it, click retry if you want to try it again.'
