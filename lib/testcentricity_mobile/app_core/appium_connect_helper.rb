@@ -390,13 +390,7 @@ module TestCentricity
 
     def self.appium_local_capabilities
       # specify endpoint url
-      if @endpoint.nil?
-        @endpoint = if ENV['APPIUM_SERVER_VERSION'] && ENV['APPIUM_SERVER_VERSION'].to_i == 1
-                      'http://127.0.0.1:4723/wd/hub'
-                    else
-                      'http://127.0.0.1:4723'
-                    end
-      end
+      @endpoint = 'http://127.0.0.1:4723' if @endpoint.nil?
       # define local Appium capabilities
       if @capabilities.nil?
         Environ.device_name = ENV['APP_DEVICE']

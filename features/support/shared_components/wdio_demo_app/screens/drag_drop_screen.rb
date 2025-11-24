@@ -6,7 +6,7 @@ module SharedDragDropScreen
     ui = {
       header_label => {
         visible: true,
-        caption: 'Drag and Drop'
+        caption:  { translate: 'wdio.drag_drop_screen.header' }
       },
       renew_button => {
         visible: true,
@@ -92,12 +92,12 @@ module SharedDragDropScreen
     ui = {
       retry_message => {
         visible: true,
-        caption: 'You made it, click retry if you want to try it again.'
+        caption: { translate: 'wdio.drag_drop_screen.solved' }
       },
       retry_button => {
         visible: true,
         enabled: true,
-        caption: 'Retry'
+        caption: { translate: 'wdio.drag_drop_screen.retry' }
       },
       left_row_1_drop => { visible: false },
       left_row_2_drop => { visible: false },

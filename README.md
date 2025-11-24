@@ -1200,10 +1200,6 @@ Refer to [this page](https://appium.io/docs/en/2.4/guides/caps/) for information
 to invoking Cucumber to run your features/scenarios on locally hosted iOS or Android simulators or physical devices. Refer
 to [**section 8.2.3 (Starting and Stopping Appium Server)**](#starting-and-stopping-appium-server) below.
 
-⚠️ If you are running locally hosted mobile tests on iOS or Android simulators or devices using version 1.x of the Appium
-server, the `APPIUM_SERVER_VERSION` environment variable must be set to `1` in order to ensure that the correct Appium server
-endpoint is used.
-
 #### Connecting to Locally Hosted iOS Simulators or Physical Devices
 
 You can run your automated tests on locally hosted iOS simulators or physically connected devices using Appium and XCode
@@ -1420,13 +1416,6 @@ starting your Cucumber test suite(s):
 
     run_appium: APPIUM_SERVER=run
 
-If you are running locally hosted mobile tests on iOS or Android simulators or devices using version 1.x of the Appium server,
-the `APPIUM_SERVER_VERSION` environment variable must be set to `1` in order to ensure that the correct Appium server endpoint
-is used. This can be set by adding the following to your `cucumber.yml` file and including `-p appium_1x` in your command line
-when starting your Cucumber test suite(s):
-
-    appium_1x: APPIUM_SERVER_VERSION=1
-
 Refer to [**section 8.4 (Using Configuration Specific Profiles in `cucumber.yml`)**](#using-configuration-specific-profiles-in-cucumber-yml) below.
 
 
@@ -1447,9 +1436,6 @@ body of an example group:
       $server.stop if Environ.driver == :appium && $server.running?
     end
 ```
-If you are running locally hosted mobile tests on iOS or Android simulators or devices using version 1.x of the Appium server,
-the `APPIUM_SERVER_VERSION` environment variable must be set to `1` in order to ensure that the correct Appium server endpoint
-is used.
 
 
 ###  Connecting to Remote Cloud Hosted iOS and Android Simulators or Physical Devices
@@ -1873,7 +1859,6 @@ with access to your version control system.
     # physical devices
     #==============
     run_appium: APPIUM_SERVER=run
-    appium_1x: APPIUM_SERVER_VERSION=1
 
 
     #==============

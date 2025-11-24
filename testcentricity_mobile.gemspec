@@ -31,12 +31,12 @@ Gem::Specification.new do |spec|
   spec.requirements << 'Appium'
 
   spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'cucumber', '10.1.0'
+  spec.add_development_dependency 'cucumber', '10.1.1'
   spec.add_development_dependency 'parallel_tests'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'require_all', '=1.5.0'
   spec.add_development_dependency 'rspec', '>= 3.13.0'
-  spec.add_development_dependency 'selenium-webdriver', '~>4.36.0'
+  spec.add_development_dependency 'selenium-webdriver', '~>4.38.0'
   spec.add_development_dependency 'simplecov', ['~> 0.18']
   spec.add_development_dependency 'yard', ['>= 0.9.0']
 
