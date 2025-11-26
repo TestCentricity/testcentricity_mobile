@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.requirements << 'Appium'
 
+  spec.add_development_dependency 'activesupport', '>= 4.0'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'cucumber', '10.1.1'
   spec.add_development_dependency 'parallel_tests'
@@ -46,6 +47,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'faker'
   spec.add_runtime_dependency 'i18n'
   spec.add_runtime_dependency 'json'
+  spec.add_runtime_dependency 'smarter_csv'
   spec.add_runtime_dependency 'test-unit'
   spec.add_runtime_dependency 'virtus'
 end
