@@ -23,8 +23,7 @@ module TestCentricity
                read('Environments', environ_name)
              when :json
                # read generic test data from data.json file
-               raw_data = File.read(JSON_PRIMARY_DATA_FILE)
-               @generic_data = JSON.parse(raw_data)
+               @generic_data = JSON.parse(File.read(JSON_PRIMARY_DATA_FILE))
                # read environment specific test data
                data_file = "#{PRIMARY_DATA_PATH}#{environ_name}_data.json"
                @environ_specific_data = if File.exist?(data_file)
@@ -42,27 +41,21 @@ module TestCentricity
       Environ.current = @current
     end
 
-    def self.read(key_name, node_name)
-      if @environ_specific_data.key?(key_name) && @environ_specific_data[key_name].key?(node_name)
-        node_data = @environ_specific_data[key_name][node_name]
-      else
-        raise "No key named #{key_name} in generic and environment-specific data" unless @generic_data.key?(key_name)
-        raise "No node named #{node_name} in #{key_name} section of generic and environment-specific data" unless @generic_data[key_name].key?(node_name)
+    def self.read(key_name, node_name, options = nil)
+      node_data = if @environ_specific_data.key?(key_name) && @environ_specific_data[key_name].key?(node_name)
+                    @environ_specific_data[key_name][node_name]
+                  else
+                    raise "No key named #{key_name} in generic and environment-specific data" unless @generic_data.key?(key_name)
+                    raise "No node named #{node_name} in #{key_name} section of generic and environment-specific data" unless @generic_data[key_name].key?(node_name)
 
-        node_data = @generic_data[key_name][node_name]
-      end
-
-      if node_data.is_a?(Hash)
-        node_data.each do |key, value|
-          node_data[key] = calculate_dynamic_value(value) if value.to_s.start_with?('eval!')
-        end
-      end
-      node_data
+                    @generic_data[key_name][node_name]
+                  end
+      process_data(node_data, options)
     end
   end
 
 
-  class Environ < TestCentricity::DataObject
+  class Environ
     @session_id = Time.now.strftime('%d%H%M%S%L')
     @session_time_stamp = Time.now.strftime('%Y%m%d%H%M%S')
     @test_environment = ENV['TEST_ENVIRONMENT']
@@ -71,6 +64,7 @@ module TestCentricity
     @language = ENV['LANGUAGE'] || 'English'
     @screen_shots = []
 
+    attr_accessor :current
     attr_accessor :test_environment
     attr_accessor :session_state
     attr_accessor :session_code
@@ -140,8 +134,14 @@ module TestCentricity
       @android_app_id   = data['ANDROID_APP_ID']
       @android_test_id  = data['ANDROID_TEST_ID']
       @deep_link_prefix = data['DEEP_LINK_PREFIX']
+    end
 
-      super
+    def self.current
+      @current
+    end
+
+    def self.current=(current)
+      @current = current
     end
 
     def self.new_app_session
