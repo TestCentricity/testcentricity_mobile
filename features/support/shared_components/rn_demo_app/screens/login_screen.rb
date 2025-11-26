@@ -10,7 +10,7 @@ module SharedLoginScreen
         visible: true,
         caption: 'Username'
       },
-      username => {
+      username_field => {
         visible: true,
         enabled: true
       },
@@ -18,7 +18,7 @@ module SharedLoginScreen
         visible: true,
         caption: 'Password'
       },
-      password => {
+      password_field => {
         visible: true,
         enabled: true
       },
@@ -33,8 +33,8 @@ module SharedLoginScreen
 
   def login
     fields = {
-      username => UserData.current.username,
-      password => UserData.current.password
+      username_field => UserData.current.username,
+      password_field => UserData.current.password
     }
     populate_data_fields(fields)
     login_button.tap
