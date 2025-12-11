@@ -2,11 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 
-## [4.1.8] - 28-NOV-2025
+## [4.1.8] - 15-DEC-2025
 
 ### Added
 * Added `DataSource.read_file` method capable of reading from `.yml`, `.json`, `.csv`, or `.xml` data files, and accepting
-  `options` hash for specifying hask key and value conversions to data being read prior to passing to `DataPresenter` objects.
+  `options` hash for specifying hash key and value conversions to data being read prior to passing to `DataPresenter` objects.
 
 ### Changed
 * Refactored `EnvironData.read` method to allow passing `options` hash for specifying hash key and value conversions to

@@ -12,7 +12,7 @@ class CheckoutPaymentScreen < BaseRNDemoAppScreen
              cvv:                  { accessibility_id: 'Security Code* input field' },
              bill_name:            { xpath: '(//XCUIElementTypeTextField[@name="Full Name* input field"])[2]' },
              bill_address_1:       { accessibility_id: 'Address Line 1* input field' },
-             address2_field:       { accessibility_id: 'Address Line 2 input field' },
+             bill_address_2:       { accessibility_id: 'Address Line 2 input field' },
              bill_city:            { accessibility_id: 'City* input field' },
              bill_state:           { accessibility_id: 'State/Region input field' },
              bill_zip_code:        { accessibility_id: 'Zip Code* input field' },

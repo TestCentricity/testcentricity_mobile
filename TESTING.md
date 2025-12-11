@@ -19,7 +19,7 @@ Test specs are used to verify connectivity to the [Sauce Labs React Native Demo 
 
 ## Cucumber Features
 
-Cucumber feature tests are used to verify the gem's Page Object Model implementation using [version 1.3.0](https://github.com/saucelabs/my-demo-app-rn/releases/tag/v1.3.0) of the
+Cucumber feature tests are used to verify the gem's Screen Object Model implementation using [version 1.3.0](https://github.com/saucelabs/my-demo-app-rn/releases/tag/v1.3.0) of the
 [Sauce Labs React Native Demo app](https://github.com/saucelabs/my-demo-app-rn) and [version 1.0.8](https://github.com/webdriverio/native-demo-app/releases/tag/v1.0.8) of the [WebDriverIO Demo app](https://github.com/webdriverio/native-demo-app). The Cucumber test
 suite includes scenarios for interacting with and validating the following functionality:
 * Switches
@@ -35,9 +35,7 @@ suite includes scenarios for interacting with and validating the following funct
 * Drawing
 * WebViews
 * Logging in using Biometrics (Face ID on iOS only)
-* Alert modals
 
 Cucumber feature tests are executed against the following target platforms:
 * locally hosted iOS device simulators (using Appium and XCode on macOS)
 * locally hosted Android Studio virtual device emulators (using Appium and Android Studio)
-
