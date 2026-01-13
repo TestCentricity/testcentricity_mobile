@@ -2010,7 +2010,7 @@ the `/features/support/<platform>/sections` folder, where `<platform>` is typica
 ---
 ## Copyright and License
 
-TestCentricity™ Framework is Copyright (c) 2014-2025, Tony Mrozinski.
+TestCentricity™ Framework is Copyright (c) 2014-2026, Tony Mrozinski.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

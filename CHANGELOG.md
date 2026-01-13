@@ -2,9 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 
-## [4.1.8] - 15-DEC-2025
+## [4.1.8] - 13-JAN-2026
 
 ### Added
+* Added `activesupport` gem as a runtime dependency to prevent test failures if gem is not already installed.
 * Added `DataSource.read_file` method capable of reading from `.yml`, `.json`, `.csv`, or `.xml` data files, and accepting
   `options` hash for specifying hash key and value conversions to data being read prior to passing to `DataPresenter` objects.
 
@@ -13,6 +14,8 @@ All notable changes to this project will be documented in this file.
   data being read prior to passing to `DataPresenter` objects.
 * Refactored `ScreenObject.populate_data_fields` and `ScreenSection.populate_data_fields` methods to support passing a
 `Symbol` for a UI element's name to support using `DataPresenter` object attributes to source data.
+* Updated `appium_lib` gem to version 16.1.1.
+* Updated `appium_lib_core` gem to version 11.2.0.
 
 ### Removed
 * Unused `DataObject` class has been removed.
