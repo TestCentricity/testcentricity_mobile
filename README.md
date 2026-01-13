@@ -95,12 +95,12 @@ A **Screen Object** is an object that represents a single screen in your AUT (Ap
 encapsulate the implementation details of a mobile app screen and expose an API that supports interaction with, and validation
 of the UI elements on the screen.
 
-**Screen Objects** makes it easier to maintain automated tests because changes to screen UI elements are updated in only
-one location - in the `ScreenObject` class definition. By adopting a **Screen Object Model**, Cucumber feature files and
-step definitions are no longer required to hold specific information about a screen's UI objects, thus minimizing maintenance
-requirements. If any element on, or property of a screen changes (text field attributes, button captions, element states,
-etc.), maintenance is performed in the `ScreenObject` class definition only, typically with no need to update the affected
-feature files, scenarios, or step definitions.
+**Screen Objects** makes it easier to maintain automated tests because changes to a screen's UI elements are updated in
+only one location - in the corresponding `ScreenObject` class definition. By adopting a **Screen Object Model**, Cucumber
+feature files and step definitions are no longer required to hold specific information about a screen's UI objects, thus
+minimizing maintenance requirements. If any element on, or property of a screen changes (text field attributes, button
+captions, element states, etc.), maintenance is performed in the corresponding `ScreenObject` class definition only, typically
+with no need to update the affected feature files, scenarios, or step definitions.
 
 
 ### Defining a ScreenObject
@@ -2010,7 +2010,7 @@ the `/features/support/<platform>/sections` folder, where `<platform>` is typica
 ---
 ## Copyright and License
 
-TestCentricity™ Framework is Copyright (c) 2014-2025, Tony Mrozinski.
+TestCentricity™ Framework is Copyright (c) 2014-2026, Tony Mrozinski.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
