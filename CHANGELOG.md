@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 
 
+## [4.1.9] - 21-MAR-2026
+
+### Changed
+
+* Update `json` and `nokogii` gems to address security vulnerabilities.
+
+
 ## [4.1.8] - 13-JAN-2026
 
 ### Added
