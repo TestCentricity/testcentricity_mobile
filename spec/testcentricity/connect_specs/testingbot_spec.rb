@@ -26,8 +26,8 @@ describe TestCentricity::AppiumConnect, testingbot: true do
           endpoint: "https://#{ENV['TB_USERNAME']}:#{ENV['TB_AUTHKEY']}@hub.testingbot.com/wd/hub",
           capabilities: {
             platformName: 'ios',
-            'appium:platformVersion': '14.8',
-            'appium:deviceName': 'iPhone 11',
+            'appium:platformVersion': '18.2',
+            'appium:deviceName': 'iPhone 16',
             'appium:realDevice': true,
             'appium:automationName': 'XCUITest',
             'appium:app': 'tb://rndemoappios',
@@ -46,8 +46,8 @@ describe TestCentricity::AppiumConnect, testingbot: true do
         verify_mobile_connect(
           dev_type = :phone,
           dev_os = :ios,
-          os_version = '14.8',
-          dev_name = 'iPhone 11',
+          os_version = '18.2',
+          dev_name = 'iPhone 16',
           platform = :device
         )
       end
