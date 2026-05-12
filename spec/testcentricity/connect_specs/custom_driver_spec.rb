@@ -41,7 +41,7 @@ RSpec.describe TestCentricity::AppiumConnect, custom: true do
             projectName: ENV['AUTOMATE_PROJECT'],
             buildName: ENV['AUTOMATE_BUILD'],
             sessionName: 'RSpec - DesiredCaps Hash',
-            appiumVersion: '2.4.1'
+            appiumVersion: '2.19.0'
           }
         }
       }
@@ -68,7 +68,7 @@ RSpec.describe TestCentricity::AppiumConnect, custom: true do
             projectName: 'TestCentricity Mobile - BrowserStack',
             buildName: "Version #{TestCentricityMobile::VERSION}",
             sessionName: 'RSpec - Custom Driver Specs',
-            appiumVersion: '2.6.0'
+            appiumVersion: '2.19.0'
           }
         }
       }
