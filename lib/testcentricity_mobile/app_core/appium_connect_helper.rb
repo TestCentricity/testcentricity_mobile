@@ -553,7 +553,7 @@ module TestCentricity
                   tb_options['testingbot.geoCountryCode'] = ENV['IP_GEOLOCATION'] if ENV['IP_GEOLOCATION']
                   tb_options[:screenrecorder] = ENV['RECORD_VIDEO'] if ENV['RECORD_VIDEO']
                   tb_options[:screenshot] = ENV['SCREENSHOTS'] if ENV['SCREENSHOTS']
-                  tb_options[:appiumVersion] = ENV['APPIUM_VERSION'] ? ENV['APPIUM_VERSION'] : '2.17.0'
+                  tb_options[:appiumVersion] = ENV['APPIUM_VERSION'] ? ENV['APPIUM_VERSION'] : '2.10.3'
 
                   capabilities = {
                     platformName: ENV['TB_OS'],
