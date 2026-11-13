@@ -64,7 +64,10 @@ module TestCentricity
                     end
       driver_opts = {
         caps: driver_caps,
-        appium_lib: { server_url: @endpoint }
+        appium_lib: {
+          server_url: @endpoint,
+          direct_connect: false
+        }
       }
       @driver = Appium::Driver.new(driver_opts, global_driver = @global_scope)
       @driver.start_driver

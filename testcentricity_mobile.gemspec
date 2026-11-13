@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
     'changelog_uri' => 'https://github.com/TestCentricity/testcentricity_mobile/blob/master/CHANGELOG.md',
     'bug_tracker_uri' => 'https://github.com/TestCentricity/testcentricity_mobile/issues',
     'wiki_uri' => 'https://github.com/TestCentricity/testcentricity_mobile/wiki',
-    'documentation_uri' => 'https://www.rubydoc.info/gems/testcentricity_mobile',
+    'documentation_uri' => 'https://www.ruby-toolbox.com/projects/testcentricity_mobile',
     'homepage_uri' => 'https://github.com/TestCentricity/testcentricity_mobile'
   }
 
@@ -41,7 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'yard', ['>= 0.9.0']
 
   spec.add_runtime_dependency 'activesupport', '>= 4.0'
-  spec.add_runtime_dependency 'appium_lib', '~> 16.3.0'
+  spec.add_runtime_dependency 'appium_lib', '~> 16.4.1'
   spec.add_runtime_dependency 'childprocess'
   spec.add_runtime_dependency 'chronic', '0.10.2'
   spec.add_runtime_dependency 'faker'

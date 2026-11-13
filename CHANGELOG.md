@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 
 
+## [4.1.11] - 13-NOV-2026
+
+### Changed
+
+* Updated `appium_lib` gem to version 16.4.1.
+* Updated `appium_lib_core` gem to version 13.2.1.
+* Update gem dependencies to address CVE-2026-85396.
+* Refactored `AppiumConnect.initialize_appium` method to disable direct connect for local runs.
+
+
 ## [4.1.10] - 15-MAY-2026
 
 ### Changed
